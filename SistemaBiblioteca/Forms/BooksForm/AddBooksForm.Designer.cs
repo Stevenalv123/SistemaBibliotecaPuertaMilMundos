@@ -39,8 +39,7 @@
             BtnCancel = new Button();
             BtnSave = new Button();
             label7 = new Label();
-            BtnAddAuthor = new FontAwesome.Sharp.IconButton();
-            CmbAuthors = new Syncfusion.WinForms.ListView.SfComboBox();
+            BtnLookAuthor = new FontAwesome.Sharp.IconButton();
             BtnAddEditorial = new FontAwesome.Sharp.IconButton();
             MtbPublicationYear = new MaskedTextBox();
             MtbStock = new MaskedTextBox();
@@ -50,7 +49,7 @@
             CmbCategories = new Syncfusion.WinForms.ListView.SfComboBox();
             BtnAddCategorie = new FontAwesome.Sharp.IconButton();
             label8 = new Label();
-            ((System.ComponentModel.ISupportInitialize)CmbAuthors).BeginInit();
+            TxtAuthors = new TextBox();
             ((System.ComponentModel.ISupportInitialize)CmbEditorial).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CmbCategories).BeginInit();
             SuspendLayout();
@@ -184,39 +183,24 @@
             label7.TabIndex = 14;
             label7.Text = "Unidades";
             // 
-            // BtnAddAuthor
+            // BtnLookAuthor
             // 
-            BtnAddAuthor.Cursor = Cursors.Hand;
-            BtnAddAuthor.FlatAppearance.BorderSize = 0;
-            BtnAddAuthor.Font = new Font("Cambria", 9F, FontStyle.Bold);
-            BtnAddAuthor.IconChar = FontAwesome.Sharp.IconChar.Add;
-            BtnAddAuthor.IconColor = Color.Green;
-            BtnAddAuthor.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            BtnAddAuthor.IconSize = 26;
-            BtnAddAuthor.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAddAuthor.Location = new Point(582, 63);
-            BtnAddAuthor.Name = "BtnAddAuthor";
-            BtnAddAuthor.Size = new Size(129, 32);
-            BtnAddAuthor.TabIndex = 15;
-            BtnAddAuthor.Text = "Agregar Autor";
-            BtnAddAuthor.TextAlign = ContentAlignment.MiddleRight;
-            BtnAddAuthor.UseVisualStyleBackColor = true;
-            BtnAddAuthor.Click += BtnAddAuthor_Click;
-            // 
-            // CmbAuthors
-            // 
-            CmbAuthors.AutoCompleteMode = AutoCompleteMode.Suggest;
-            CmbAuthors.BackColor = Color.White;
-            CmbAuthors.ComboBoxMode = Syncfusion.WinForms.ListView.Enums.ComboBoxMode.MultiSelection;
-            CmbAuthors.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
-            CmbAuthors.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            CmbAuthors.Location = new Point(261, 63);
-            CmbAuthors.Name = "CmbAuthors";
-            CmbAuthors.Size = new Size(305, 32);
-            CmbAuthors.Style.EditorStyle.BackColor = Color.White;
-            CmbAuthors.Style.TokenStyle.CloseButtonBackColor = Color.FromArgb(255, 255, 255);
-            CmbAuthors.TabIndex = 16;
-            CmbAuthors.Watermark = "S/A";
+            BtnLookAuthor.Cursor = Cursors.Hand;
+            BtnLookAuthor.FlatAppearance.BorderSize = 0;
+            BtnLookAuthor.Font = new Font("Cambria", 9F, FontStyle.Bold);
+            BtnLookAuthor.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            BtnLookAuthor.IconColor = Color.FromArgb(40, 68, 131);
+            BtnLookAuthor.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            BtnLookAuthor.IconSize = 26;
+            BtnLookAuthor.ImageAlign = ContentAlignment.TopLeft;
+            BtnLookAuthor.Location = new Point(582, 63);
+            BtnLookAuthor.Name = "BtnLookAuthor";
+            BtnLookAuthor.Size = new Size(129, 32);
+            BtnLookAuthor.TabIndex = 15;
+            BtnLookAuthor.Text = "Ver Autores     ";
+            BtnLookAuthor.TextAlign = ContentAlignment.MiddleRight;
+            BtnLookAuthor.UseVisualStyleBackColor = true;
+            BtnLookAuthor.Click += BtnAddAuthor_Click;
             // 
             // BtnAddEditorial
             // 
@@ -344,12 +328,23 @@
             label8.TabIndex = 23;
             label8.Text = "Categoria: ";
             // 
+            // TxtAuthors
+            // 
+            TxtAuthors.BackColor = Color.White;
+            TxtAuthors.Font = new Font("Cambria", 15.75F);
+            TxtAuthors.Location = new Point(261, 65);
+            TxtAuthors.Name = "TxtAuthors";
+            TxtAuthors.ReadOnly = true;
+            TxtAuthors.Size = new Size(305, 32);
+            TxtAuthors.TabIndex = 26;
+            // 
             // AddBooks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(748, 441);
+            Controls.Add(TxtAuthors);
             Controls.Add(CmbCategories);
             Controls.Add(BtnAddCategorie);
             Controls.Add(label8);
@@ -359,8 +354,7 @@
             Controls.Add(MtbPublicationYear);
             Controls.Add(CmbEditorial);
             Controls.Add(BtnAddEditorial);
-            Controls.Add(CmbAuthors);
-            Controls.Add(BtnAddAuthor);
+            Controls.Add(BtnLookAuthor);
             Controls.Add(label7);
             Controls.Add(BtnCancel);
             Controls.Add(BtnSave);
@@ -379,7 +373,6 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Agregar Libro";
-            ((System.ComponentModel.ISupportInitialize)CmbAuthors).EndInit();
             ((System.ComponentModel.ISupportInitialize)CmbEditorial).EndInit();
             ((System.ComponentModel.ISupportInitialize)CmbCategories).EndInit();
             ResumeLayout(false);
@@ -399,8 +392,7 @@
         private Button BtnCancel;
         private Button BtnSave;
         private Label label7;
-        private FontAwesome.Sharp.IconButton BtnAddAuthor;
-        private Syncfusion.WinForms.ListView.SfComboBox CmbAuthors;
+        private FontAwesome.Sharp.IconButton BtnLookAuthor;
         private FontAwesome.Sharp.IconButton BtnAddEditorial;
         private MaskedTextBox MtbPublicationYear;
         private MaskedTextBox MtbStock;
@@ -410,5 +402,6 @@
         private Syncfusion.WinForms.ListView.SfComboBox CmbCategories;
         private FontAwesome.Sharp.IconButton BtnAddCategorie;
         private Label label8;
+        private TextBox TxtAuthors;
     }
 }

@@ -15,14 +15,14 @@ namespace SistemaBiblioteca.Forms.Books
     public partial class AddBooks : Form
     {
         bool correctISBN;
-        public List<Author> authors { get; set; }
+        public List<Author> selectedAuthors { get; set; }
         public List<Editorial> editorials { get; set; }
         public List<Categorie> categories { get; set; }
         public List<Book> books { get; set; }
         public AddBooks(List<Book> existingBooks)
         {
             InitializeComponent();
-            authors = new List<Author>();
+            selectedAuthors = new List<Author>();
             editorials = new List<Editorial>();
             categories = new List<Categorie>();
             books = existingBooks;
@@ -32,14 +32,7 @@ namespace SistemaBiblioteca.Forms.Books
         {
             string title = TxtTitle.Text;
 
-            List<Author> selectedAuthors = new List<Author>();
-            foreach (var item in CmbAuthors.SelectedItems)
-            {
-                if (item is Author selectedAuthor)
-                {
-                    selectedAuthors.Add(selectedAuthor);
-                }
-            }
+            
 
             Categorie categorie = CmbCategories.SelectedItem as Categorie;
             string isbn = MtbISBN.Text;
@@ -48,10 +41,7 @@ namespace SistemaBiblioteca.Forms.Books
             int stock = int.Parse(MtbStock.Text);
             State bookState = State.Disponible;
 
-            Book book = new Book(title, selectedAuthors, categorie, isbn, editorial, yearPublication, stock, bookState);
-            books.Add(book);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            
         }
 
         private void ValidateForm()
@@ -65,13 +55,10 @@ namespace SistemaBiblioteca.Forms.Books
 
         private void BtnAddAuthor_Click(object sender, EventArgs e)
         {
-            AddAutorForm addAutorForm = new AddAutorForm(authors);
-            if (addAutorForm.ShowDialog() == DialogResult.OK)
+            AuthorsForms autorForm = new AuthorsForms(selectedAuthors);
+            if (autorForm.ShowDialog() == DialogResult.OK)
             {
-                // Actualizar el ComboBox con la lista de autores actualizada
-                CmbAuthors.DataSource = null;
-                CmbAuthors.DataSource = authors;
-                CmbAuthors.DisplayMember = "Name";
+                TxtAuthors.Text = string.Join(", ", selectedAuthors.Select(a => a.Name));
             }
         }
 

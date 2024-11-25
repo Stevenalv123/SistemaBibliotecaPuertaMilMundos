@@ -100,6 +100,7 @@
             BtnUpdateAuthor.Text = "Actualizar autor";
             BtnUpdateAuthor.TextAlign = ContentAlignment.MiddleRight;
             BtnUpdateAuthor.UseVisualStyleBackColor = true;
+            BtnUpdateAuthor.Click += BtnUpdateAuthor_Click;
             // 
             // BtnDeleteAuthor
             // 
@@ -178,7 +179,6 @@
             BtnSearch.Size = new Size(29, 18);
             BtnSearch.TabIndex = 17;
             BtnSearch.UseVisualStyleBackColor = true;
-            BtnSearch.Click += BtnSearch_Click;
             // 
             // AuthorsForms
             // 

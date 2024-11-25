@@ -11,9 +11,9 @@ namespace SistemaBiblioteca.Entities
         public string Id_Author { get; set; }
         public string Name { get; set; }
         public string Nacionality { get; set; }
-        public string Year_birth { get; set; }
+        public int Year_birth { get; set; }
 
-        public Author(string name, string nacionality, string year_birth)
+        public Author(string name, string nacionality, int year_birth)
         {
             Id_Author = GetId_Author();
             Name = name;

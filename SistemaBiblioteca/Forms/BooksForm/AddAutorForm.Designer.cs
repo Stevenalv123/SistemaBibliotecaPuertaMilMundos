@@ -151,6 +151,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Nuevo Autor";
+            Load += AddAutorForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

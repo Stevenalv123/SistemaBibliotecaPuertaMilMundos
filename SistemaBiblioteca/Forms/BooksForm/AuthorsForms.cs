@@ -28,11 +28,12 @@ namespace SistemaBiblioteca.Forms.BooksForm
 
         private void BtnAddAuthor_Click(object sender, EventArgs e)
         {
-            AddAutorForm addAutorForm = new AddAutorForm(authors);
+            AddAutorForm addAutorForm = new AddAutorForm(authors, null);
             if (addAutorForm.ShowDialog() == DialogResult.OK)
             {
-                UpdateAuthorList(authors); // Refrescar la lista completa
-                filteredAuthors = new List<Author>(authors); // Actualizar la copia filtrada
+                UpdateAuthorList(authors);
+                filteredAuthors = new List<Author>(authors);
+                SaveAuthorsToFile();
             }
         }
 
@@ -40,22 +41,16 @@ namespace SistemaBiblioteca.Forms.BooksForm
         {
             selectedAuthors.Clear();
 
-            if (lstAuthors.SelectedIndices.Count > 0) // Solo activar botones si hay selección
+            if (lstAuthors.SelectedIndices.Count > 0)
             {
                 BtnDeleteAuthor.Enabled = true;
                 BtnReady.Visible = true;
-                if (lstAuthors.SelectedIndices.Count == 1)
-                {
-                    BtnUpdateAuthor.Enabled = true;
-                }
-                else
-                {
-                    BtnUpdateAuthor.Enabled = false;
-                }
+                BtnUpdateAuthor.Enabled = lstAuthors.SelectedIndices.Count == 1;
 
                 foreach (int index in lstAuthors.SelectedIndices)
                 {
-                    selectedAuthors.Add(filteredAuthors[index]); // Usar lista filtrada
+                    var author = (Author)lstAuthors.Items[index];
+                    selectedAuthors.Add(author);
                 }
 
                 LblSelectedAuthors.Text = $"Autores seleccionados: {selectedAuthors.Count}";
@@ -95,7 +90,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
                             {
                                 string name = datos[0].Trim();
                                 string nationality = datos[1].Trim();
-                                string birthYear = datos[2].Trim();
+                                int birthYear = Convert.ToInt32(datos[2].Trim());
 
                                 authors.Add(new Author(name, nationality, birthYear));
                             }
@@ -118,16 +113,11 @@ namespace SistemaBiblioteca.Forms.BooksForm
         private void UpdateAuthorList(List<Author> authorsToShow)
         {
             lstAuthors.Items.Clear();
-            var alphabeticalNames = authorsToShow.OrderBy(a => a.Name).ToList();
-            foreach (Author author in alphabeticalNames)
+            lstAuthors.DisplayMember = "Name";
+            foreach (Author author in authorsToShow.OrderBy(a => a.Name))
             {
-                lstAuthors.Items.Add(author.Name);
+                lstAuthors.Items.Add(author);
             }
-        }
-
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            SearchAuthor();
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -140,7 +130,8 @@ namespace SistemaBiblioteca.Forms.BooksForm
             string search = TxtSearch.Text.Trim().ToLower();
             filteredAuthors = authors.Where(a => a.Name.ToLower().Contains(search)
                               || a.Nacionality.ToLower().Contains(search)
-                              || a.Year_birth.ToLower().Contains(search)).ToList();
+                              || a.Year_birth.ToString().Contains(search)).ToList();
+            selectedAuthors.Clear();
             UpdateAuthorList(filteredAuthors);
         }
 
@@ -156,13 +147,11 @@ namespace SistemaBiblioteca.Forms.BooksForm
                 }
                 lstAuthors.SelectedIndex = -1;
                 BtnReady.Visible = false;
-                LblSelectedAuthors.Visible=false;
+                LblSelectedAuthors.Visible = false;
                 filteredAuthors = new List<Author>(authors);
 
-                // Guardar la lista actualizada en el archivo
                 SaveAuthorsToFile();
 
-                // Actualizar la interfaz
                 UpdateAuthorList(filteredAuthors);
             }
         }
@@ -174,13 +163,11 @@ namespace SistemaBiblioteca.Forms.BooksForm
 
             try
             {
-                // Verificar si la carpeta existe, si no, crearla
                 if (!Directory.Exists(rutaCarpeta))
                 {
                     Directory.CreateDirectory(rutaCarpeta);
                 }
 
-                // Sobrescribir el archivo con la lista actualizada
                 using (StreamWriter writer = new StreamWriter(rutaArchivo))
                 {
                     foreach (Author author in authors)
@@ -192,6 +179,20 @@ namespace SistemaBiblioteca.Forms.BooksForm
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al guardar los autores: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnUpdateAuthor_Click(object sender, EventArgs e)
+        {
+            if(selectedAuthors.Count > 0)
+            {
+                AddAutorForm addAutorForm = new AddAutorForm(authors, selectedAuthors[0]);
+                if (addAutorForm.ShowDialog() == DialogResult.OK)
+                {
+                    UpdateAuthorList(selectedAuthors);
+                    filteredAuthors = new List<Author>(authors);
+                    SaveAuthorsToFile();
+                }
             }
         }
     }

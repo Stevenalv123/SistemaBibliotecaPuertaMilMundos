@@ -23,8 +23,10 @@ public class Book:IBook
     public int YearPublication { get; set; }
     public int Stock { get; set; }
     public State BookState { get; set; }
+    public PictureBox Cover {  get; set; }
+    public int Pages { get; set; }
 
-    public Book(string title, List<Author> author, Categorie categorie, string iSBN, Editorial editorial, int yearPublication, int stock, State bookState)
+    public Book(string title, List<Author> author, Categorie categorie, string iSBN, Editorial editorial, int yearPublication, int stock, State bookState, PictureBox cover, int pages)
     {
         Id_Book = GetId_Book();
         Title = title;
@@ -34,7 +36,9 @@ public class Book:IBook
         Editorial = editorial;
         YearPublication = yearPublication;
         Stock = stock;
-        BookState = bookState;  
+        BookState = bookState;
+        Cover = cover;
+        Pages = pages;
     }
 
     private int counterBook = 1;

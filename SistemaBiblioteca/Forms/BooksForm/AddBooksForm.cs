@@ -30,18 +30,27 @@ namespace SistemaBiblioteca.Forms.Books
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            string title = TxtTitle.Text;
+            try
+            {
+                string title = TxtTitle.Text;
+                string isbn = MtbISBN.Text;
+                Editorial editorial = editorials != null ? editorials.Find(e => e.Name == CmbEditorial.Text) : null;
+                int yearPublication = Convert.ToInt32(MtbPublicationYear.Text);
+                int stock = (int)NudStock.Value;
+                string cover = PcbCover.ImageLocation;
+                int pages = (int)NudPages.Value;
+                State state = State.Disponible;
+                Categorie categorie = (Categorie)CmbCategories.SelectedItem;
+                List<Author> authors = selectedAuthors;
 
-            
-
-            Categorie categorie = CmbCategories.SelectedItem as Categorie;
-            string isbn = MtbISBN.Text;
-            Editorial editorial = CmbEditorial.SelectedItem as Editorial;
-            int yearPublication = int.Parse(MtbPublicationYear.Text);
-            int stock = int.Parse(MtbStock.Text);
-            State bookState = State.Disponible;
-
-            
+                Book book = new Book(title, authors, categorie, isbn, editorial, yearPublication, stock, state, new PictureBox(), pages);
+                books.Add(book);
+                this.DialogResult = DialogResult.OK;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrió un error al agregar el libro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ValidateForm()
@@ -107,6 +116,24 @@ namespace SistemaBiblioteca.Forms.Books
                 CmbCategories.DataSource = categories.ToList();
                 CmbCategories.DisplayMember = "Name";
             }
+        }
+
+        private void PcbCover_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = "";
+            openFileDialog.Filter = ("Archivo de imagen|*.jpg;*.JPEG;*.png");
+            openFileDialog.FilterIndex = 3;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                PcbCover.BackgroundImage = null;
+                PcbCover.Image = new Bitmap(openFileDialog.FileName);
+            }
+        }
+
+        private void AddBooks_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

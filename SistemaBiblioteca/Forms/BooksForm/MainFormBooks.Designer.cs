@@ -29,9 +29,20 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormBooks));
             MainPanel = new Panel();
             dtgBooks = new DataGridView();
+            Cell_ID = new DataGridViewTextBoxColumn();
+            Cell_Title = new DataGridViewTextBoxColumn();
+            Cell_Autor = new DataGridViewTextBoxColumn();
+            Cell_ISBN = new DataGridViewTextBoxColumn();
+            Categorie = new DataGridViewTextBoxColumn();
+            Cell_Editorial = new DataGridViewTextBoxColumn();
+            Cell_Year = new DataGridViewTextBoxColumn();
+            Cell_Quantity = new DataGridViewTextBoxColumn();
+            Cell_State = new DataGridViewTextBoxColumn();
             BottomPanel = new Panel();
             StatusStripBooks = new StatusStrip();
             BtnMessage = new FontAwesome.Sharp.IconDropDownButton();
@@ -53,15 +64,6 @@
             UsernamePanel = new Panel();
             LblUsers = new Label();
             PrintDialogBooks = new PrintDialog();
-            Cell_ID = new DataGridViewTextBoxColumn();
-            Cell_Title = new DataGridViewTextBoxColumn();
-            Cell_Autor = new DataGridViewTextBoxColumn();
-            Cell_ISBN = new DataGridViewTextBoxColumn();
-            Categorie = new DataGridViewTextBoxColumn();
-            Cell_Editorial = new DataGridViewTextBoxColumn();
-            Cell_Year = new DataGridViewTextBoxColumn();
-            Cell_Quantity = new DataGridViewTextBoxColumn();
-            Cell_State = new DataGridViewTextBoxColumn();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgBooks).BeginInit();
             BottomPanel.SuspendLayout();
@@ -87,21 +89,34 @@
             // 
             dtgBooks.AllowUserToAddRows = false;
             dtgBooks.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dtgBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dtgBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgBooks.BackgroundColor = Color.White;
             dtgBooks.BorderStyle = BorderStyle.None;
             dtgBooks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(40, 68, 131);
+            dataGridViewCellStyle2.Font = new Font("Cambria", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(40, 68, 131);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgBooks.Columns.AddRange(new DataGridViewColumn[] { Cell_ID, Cell_Title, Cell_Autor, Cell_ISBN, Categorie, Cell_Editorial, Cell_Year, Cell_Quantity, Cell_State });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.DarkGray;
+            dataGridViewCellStyle3.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dtgBooks.DefaultCellStyle = dataGridViewCellStyle3;
             dtgBooks.Dock = DockStyle.Fill;
             dtgBooks.Location = new Point(2, 2);
             dtgBooks.Name = "dtgBooks";
@@ -109,6 +124,60 @@
             dtgBooks.RowHeadersVisible = false;
             dtgBooks.Size = new Size(927, 480);
             dtgBooks.TabIndex = 3;
+            // 
+            // Cell_ID
+            // 
+            Cell_ID.HeaderText = "ID";
+            Cell_ID.Name = "Cell_ID";
+            Cell_ID.ReadOnly = true;
+            // 
+            // Cell_Title
+            // 
+            Cell_Title.HeaderText = "Titulo";
+            Cell_Title.Name = "Cell_Title";
+            Cell_Title.ReadOnly = true;
+            // 
+            // Cell_Autor
+            // 
+            Cell_Autor.HeaderText = "Autor";
+            Cell_Autor.Name = "Cell_Autor";
+            Cell_Autor.ReadOnly = true;
+            // 
+            // Cell_ISBN
+            // 
+            Cell_ISBN.HeaderText = "ISBN";
+            Cell_ISBN.Name = "Cell_ISBN";
+            Cell_ISBN.ReadOnly = true;
+            // 
+            // Categorie
+            // 
+            Categorie.HeaderText = "Categorias";
+            Categorie.Name = "Categorie";
+            Categorie.ReadOnly = true;
+            // 
+            // Cell_Editorial
+            // 
+            Cell_Editorial.HeaderText = "Editorial";
+            Cell_Editorial.Name = "Cell_Editorial";
+            Cell_Editorial.ReadOnly = true;
+            // 
+            // Cell_Year
+            // 
+            Cell_Year.HeaderText = "Año de publicacion";
+            Cell_Year.Name = "Cell_Year";
+            Cell_Year.ReadOnly = true;
+            // 
+            // Cell_Quantity
+            // 
+            Cell_Quantity.HeaderText = "Stock";
+            Cell_Quantity.Name = "Cell_Quantity";
+            Cell_Quantity.ReadOnly = true;
+            // 
+            // Cell_State
+            // 
+            Cell_State.HeaderText = "Estado";
+            Cell_State.Name = "Cell_State";
+            Cell_State.ReadOnly = true;
             // 
             // BottomPanel
             // 
@@ -147,7 +216,7 @@
             MessageReady.BackColor = Color.White;
             MessageReady.ForeColor = Color.Black;
             MessageReady.Name = "MessageReady";
-            MessageReady.Size = new Size(131, 22);
+            MessageReady.Size = new Size(132, 22);
             MessageReady.Text = "¡Todo listo!";
             // 
             // LblMessage
@@ -299,60 +368,6 @@
             // PrintDialogBooks
             // 
             PrintDialogBooks.UseEXDialog = true;
-            // 
-            // Cell_ID
-            // 
-            Cell_ID.HeaderText = "ID";
-            Cell_ID.Name = "Cell_ID";
-            Cell_ID.ReadOnly = true;
-            // 
-            // Cell_Title
-            // 
-            Cell_Title.HeaderText = "Titulo";
-            Cell_Title.Name = "Cell_Title";
-            Cell_Title.ReadOnly = true;
-            // 
-            // Cell_Autor
-            // 
-            Cell_Autor.HeaderText = "Autor";
-            Cell_Autor.Name = "Cell_Autor";
-            Cell_Autor.ReadOnly = true;
-            // 
-            // Cell_ISBN
-            // 
-            Cell_ISBN.HeaderText = "ISBN";
-            Cell_ISBN.Name = "Cell_ISBN";
-            Cell_ISBN.ReadOnly = true;
-            // 
-            // Categorie
-            // 
-            Categorie.HeaderText = "Categorias";
-            Categorie.Name = "Categorie";
-            Categorie.ReadOnly = true;
-            // 
-            // Cell_Editorial
-            // 
-            Cell_Editorial.HeaderText = "Editorial";
-            Cell_Editorial.Name = "Cell_Editorial";
-            Cell_Editorial.ReadOnly = true;
-            // 
-            // Cell_Year
-            // 
-            Cell_Year.HeaderText = "Año de publicacion";
-            Cell_Year.Name = "Cell_Year";
-            Cell_Year.ReadOnly = true;
-            // 
-            // Cell_Quantity
-            // 
-            Cell_Quantity.HeaderText = "Stock";
-            Cell_Quantity.Name = "Cell_Quantity";
-            Cell_Quantity.ReadOnly = true;
-            // 
-            // Cell_State
-            // 
-            Cell_State.HeaderText = "Estado";
-            Cell_State.Name = "Cell_State";
-            Cell_State.ReadOnly = true;
             // 
             // MainFormBooks
             // 

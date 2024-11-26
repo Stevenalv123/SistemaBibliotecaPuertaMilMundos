@@ -28,21 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormBooks));
-            MainPanel = new Panel();
-            dtgBooks = new DataGridView();
-            Cell_ID = new DataGridViewTextBoxColumn();
-            Cell_Title = new DataGridViewTextBoxColumn();
-            Cell_Autor = new DataGridViewTextBoxColumn();
-            Cell_ISBN = new DataGridViewTextBoxColumn();
-            Categorie = new DataGridViewTextBoxColumn();
-            Cell_Editorial = new DataGridViewTextBoxColumn();
-            Cell_Year = new DataGridViewTextBoxColumn();
-            Cell_Quantity = new DataGridViewTextBoxColumn();
-            Cell_State = new DataGridViewTextBoxColumn();
             BottomPanel = new Panel();
             StatusStripBooks = new StatusStrip();
             BtnMessage = new FontAwesome.Sharp.IconDropDownButton();
@@ -64,8 +50,7 @@
             UsernamePanel = new Panel();
             LblUsers = new Label();
             PrintDialogBooks = new PrintDialog();
-            MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgBooks).BeginInit();
+            FlpBooks = new FlowLayoutPanel();
             BottomPanel.SuspendLayout();
             StatusStripBooks.SuspendLayout();
             panel1.SuspendLayout();
@@ -74,110 +59,6 @@
             SearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // MainPanel
-            // 
-            MainPanel.Controls.Add(dtgBooks);
-            MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(0, 112);
-            MainPanel.Name = "MainPanel";
-            MainPanel.Padding = new Padding(2);
-            MainPanel.Size = new Size(931, 484);
-            MainPanel.TabIndex = 10;
-            // 
-            // dtgBooks
-            // 
-            dtgBooks.AllowUserToAddRows = false;
-            dtgBooks.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dtgBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dtgBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgBooks.BackgroundColor = Color.White;
-            dtgBooks.BorderStyle = BorderStyle.None;
-            dtgBooks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(40, 68, 131);
-            dataGridViewCellStyle2.Font = new Font("Cambria", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.NullValue = "-";
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(40, 68, 131);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtgBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dtgBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgBooks.Columns.AddRange(new DataGridViewColumn[] { Cell_ID, Cell_Title, Cell_Autor, Cell_ISBN, Categorie, Cell_Editorial, Cell_Year, Cell_Quantity, Cell_State });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.DarkGray;
-            dataGridViewCellStyle3.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dtgBooks.DefaultCellStyle = dataGridViewCellStyle3;
-            dtgBooks.Dock = DockStyle.Fill;
-            dtgBooks.Location = new Point(2, 2);
-            dtgBooks.Name = "dtgBooks";
-            dtgBooks.ReadOnly = true;
-            dtgBooks.RowHeadersVisible = false;
-            dtgBooks.Size = new Size(927, 480);
-            dtgBooks.TabIndex = 3;
-            // 
-            // Cell_ID
-            // 
-            Cell_ID.HeaderText = "ID";
-            Cell_ID.Name = "Cell_ID";
-            Cell_ID.ReadOnly = true;
-            // 
-            // Cell_Title
-            // 
-            Cell_Title.HeaderText = "Titulo";
-            Cell_Title.Name = "Cell_Title";
-            Cell_Title.ReadOnly = true;
-            // 
-            // Cell_Autor
-            // 
-            Cell_Autor.HeaderText = "Autor";
-            Cell_Autor.Name = "Cell_Autor";
-            Cell_Autor.ReadOnly = true;
-            // 
-            // Cell_ISBN
-            // 
-            Cell_ISBN.HeaderText = "ISBN";
-            Cell_ISBN.Name = "Cell_ISBN";
-            Cell_ISBN.ReadOnly = true;
-            // 
-            // Categorie
-            // 
-            Categorie.HeaderText = "Categorias";
-            Categorie.Name = "Categorie";
-            Categorie.ReadOnly = true;
-            // 
-            // Cell_Editorial
-            // 
-            Cell_Editorial.HeaderText = "Editorial";
-            Cell_Editorial.Name = "Cell_Editorial";
-            Cell_Editorial.ReadOnly = true;
-            // 
-            // Cell_Year
-            // 
-            Cell_Year.HeaderText = "Año de publicacion";
-            Cell_Year.Name = "Cell_Year";
-            Cell_Year.ReadOnly = true;
-            // 
-            // Cell_Quantity
-            // 
-            Cell_Quantity.HeaderText = "Stock";
-            Cell_Quantity.Name = "Cell_Quantity";
-            Cell_Quantity.ReadOnly = true;
-            // 
-            // Cell_State
-            // 
-            Cell_State.HeaderText = "Estado";
-            Cell_State.Name = "Cell_State";
-            Cell_State.ReadOnly = true;
             // 
             // BottomPanel
             // 
@@ -369,19 +250,26 @@
             // 
             PrintDialogBooks.UseEXDialog = true;
             // 
+            // FlpBooks
+            // 
+            FlpBooks.Dock = DockStyle.Fill;
+            FlpBooks.Location = new Point(0, 112);
+            FlpBooks.Name = "FlpBooks";
+            FlpBooks.Size = new Size(931, 484);
+            FlpBooks.TabIndex = 10;
+            // 
             // MainFormBooks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(931, 630);
-            Controls.Add(MainPanel);
+            Controls.Add(FlpBooks);
             Controls.Add(BottomPanel);
             Controls.Add(panel1);
             Controls.Add(TopPanel);
             Name = "MainFormBooks";
             Text = "Books";
-            MainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgBooks).EndInit();
+            Load += MainFormBooks_Load;
             BottomPanel.ResumeLayout(false);
             BottomPanel.PerformLayout();
             StatusStripBooks.ResumeLayout(false);
@@ -399,9 +287,6 @@
         }
 
         #endregion
-
-        private Panel MainPanel;
-        private DataGridView dtgBooks;
         private Panel BottomPanel;
         private StatusStrip StatusStripBooks;
         private FontAwesome.Sharp.IconDropDownButton BtnMessage;
@@ -423,14 +308,6 @@
         private PrintDialog PrintDialogBooks;
         private ToolStripButton BtnAddBook;
         private ToolStripSeparator toolStripSeparator3;
-        private DataGridViewTextBoxColumn Cell_ID;
-        private DataGridViewTextBoxColumn Cell_Title;
-        private DataGridViewTextBoxColumn Cell_Autor;
-        private DataGridViewTextBoxColumn Cell_ISBN;
-        private DataGridViewTextBoxColumn Categorie;
-        private DataGridViewTextBoxColumn Cell_Editorial;
-        private DataGridViewTextBoxColumn Cell_Year;
-        private DataGridViewTextBoxColumn Cell_Quantity;
-        private DataGridViewTextBoxColumn Cell_State;
+        private FlowLayoutPanel FlpBooks;
     }
 }

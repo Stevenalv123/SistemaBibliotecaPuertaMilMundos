@@ -56,6 +56,7 @@
             NudPages = new NumericUpDown();
             label11 = new Label();
             NudStock = new NumericUpDown();
+            label12 = new Label();
             ((System.ComponentModel.ISupportInitialize)CmbEditorial).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CmbCategories).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PcbCover).BeginInit();
@@ -251,13 +252,18 @@
             CmbEditorial.BackColor = Color.White;
             CmbEditorial.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
             CmbEditorial.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
+            CmbEditorial.Font = new Font("Cambria", 12F);
             CmbEditorial.Location = new Point(550, 210);
             CmbEditorial.Name = "CmbEditorial";
             CmbEditorial.Size = new Size(305, 32);
             CmbEditorial.Style.EditorStyle.BackColor = Color.White;
+            CmbEditorial.Style.EditorStyle.Font = new Font("Cambria", 12F);
             CmbEditorial.Style.ReadOnlyEditorStyle.BackColor = Color.White;
+            CmbEditorial.Style.ReadOnlyEditorStyle.Font = new Font("Cambria", 12F);
             CmbEditorial.Style.TokenStyle.CloseButtonBackColor = Color.FromArgb(255, 255, 255);
+            CmbEditorial.Style.TokenStyle.Font = new Font("Cambria", 12F);
             CmbEditorial.TabIndex = 18;
+            CmbEditorial.Tag = "0";
             CmbEditorial.Watermark = "S/E";
             // 
             // LblIconFormat
@@ -284,13 +290,18 @@
             CmbCategories.BackColor = Color.White;
             CmbCategories.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
             CmbCategories.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
+            CmbCategories.Font = new Font("Cambria", 12F);
             CmbCategories.Location = new Point(550, 110);
             CmbCategories.Name = "CmbCategories";
             CmbCategories.Size = new Size(305, 32);
             CmbCategories.Style.EditorStyle.BackColor = Color.White;
+            CmbCategories.Style.EditorStyle.Font = new Font("Cambria", 12F);
             CmbCategories.Style.ReadOnlyEditorStyle.BackColor = Color.White;
+            CmbCategories.Style.ReadOnlyEditorStyle.Font = new Font("Cambria", 12F);
             CmbCategories.Style.TokenStyle.CloseButtonBackColor = Color.FromArgb(255, 255, 255);
+            CmbCategories.Style.TokenStyle.Font = new Font("Cambria", 12F);
             CmbCategories.TabIndex = 25;
+            CmbCategories.Tag = "0";
             CmbCategories.Watermark = "S/E";
             // 
             // BtnAddCategorie
@@ -391,12 +402,23 @@
             NudStock.Size = new Size(141, 36);
             NudStock.TabIndex = 32;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 8F, FontStyle.Italic);
+            label12.Location = new Point(12, 460);
+            label12.Name = "label12";
+            label12.Size = new Size(251, 13);
+            label12.TabIndex = 33;
+            label12.Text = "*Haga click sobre la imagen para añadir una nueva";
+            // 
             // AddBooks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1019, 478);
+            Controls.Add(label12);
             Controls.Add(NudStock);
             Controls.Add(label11);
             Controls.Add(NudPages);
@@ -425,8 +447,9 @@
             Controls.Add(label2);
             Controls.Add(label1);
             MaximizeBox = false;
+            MaximumSize = new Size(1035, 517);
             MinimizeBox = false;
-            MinimumSize = new Size(764, 427);
+            MinimumSize = new Size(1035, 517);
             Name = "AddBooks";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
@@ -470,5 +493,6 @@
         private NumericUpDown NudPages;
         private Label label11;
         private NumericUpDown NudStock;
+        private Label label12;
     }
 }

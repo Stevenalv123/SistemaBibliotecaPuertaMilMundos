@@ -8,13 +8,13 @@ namespace SistemaBiblioteca.Entities
 {
     public interface IBook
     {
-        public void AddBook();
+        void AddBook(List<Book> books);
 
-        public void UpdateBook();
+        void UpdateBook();
 
-        public void DeleteBook();
+        void DeleteBook(List<Book> books);
 
-        public void GetBook();
+        void GetBook();
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using SistemaBiblioteca.Entities;
+﻿using Microsoft.Win32;
+using SistemaBiblioteca.Entities;
 using SistemaBiblioteca.Forms.BooksForm;
 using System;
 using System.Collections.Generic;
@@ -37,14 +38,24 @@ namespace SistemaBiblioteca.Forms.Books
                 Editorial editorial = editorials != null ? editorials.Find(e => e.Name == CmbEditorial.Text) : null;
                 int yearPublication = Convert.ToInt32(MtbPublicationYear.Text);
                 int stock = (int)NudStock.Value;
-                string cover = PcbCover.ImageLocation;
                 int pages = (int)NudPages.Value;
                 State state = State.Disponible;
                 Categorie categorie = (Categorie)CmbCategories.SelectedItem;
                 List<Author> authors = selectedAuthors;
+                string coverPath = PcbCover.ImageLocation; // Obtiene la ubicación del archivo seleccionado
+                Image coverImage = null;
 
-                Book book = new Book(title, authors, categorie, isbn, editorial, yearPublication, stock, state, new PictureBox(), pages);
-                books.Add(book);
+                if (!string.IsNullOrEmpty(coverPath))
+                {
+                    coverImage = new Bitmap(coverPath); // Carga la imagen en la propiedad
+                }
+                else
+                {
+                    coverImage = Properties.Resources.book;
+                }
+
+                Book book = new Book(title, authors, categorie, isbn, editorial, yearPublication, stock, state, coverImage, pages);
+                book.AddBook(books);
                 this.DialogResult = DialogResult.OK;
             }
             catch (Exception)
@@ -120,14 +131,15 @@ namespace SistemaBiblioteca.Forms.Books
 
         private void PcbCover_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = "";
-            openFileDialog.Filter = ("Archivo de imagen|*.jpg;*.JPEG;*.png");
-            openFileDialog.FilterIndex = 3;
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            openFileDialog.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png";
+            openFileDialog.FilterIndex = 1;
+
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                PcbCover.BackgroundImage = null;
                 PcbCover.Image = new Bitmap(openFileDialog.FileName);
+                PcbCover.ImageLocation = openFileDialog.FileName; 
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace SistemaBiblioteca.Forms
 {
-    partial class UserForm
+    partial class MainFormStudents
     {
         /// <summary>
         /// Required designer variable.
@@ -28,50 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormStudents));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             TopPanel = new Panel();
             SearchPanel = new Panel();
             pictureBox1 = new PictureBox();
             UsernamePanel = new Panel();
             TxtSearch = new TextBox();
-            LblUsers = new Label();
+            LblStudents = new Label();
             panel1 = new Panel();
             ToolBoxUsers = new ToolStrip();
+            TsbAddStudent = new ToolStripButton();
+            toolStripSeparator3 = new ToolStripSeparator();
             BtnEdit = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             BtnDelete = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
             BtnPrint = new ToolStripButton();
-            BottomPanel = new Panel();
-            statusStrip1 = new StatusStrip();
-            BtnMessage = new FontAwesome.Sharp.IconDropDownButton();
-            MessageReady = new ToolStripMenuItem();
-            LblMessage = new ToolStripStatusLabel();
             MainPanel = new Panel();
-            dtgUsers = new DataGridView();
-            Cell_ID = new DataGridViewTextBoxColumn();
+            DtvStudents = new DataGridView();
+            Cell_Carnet = new DataGridViewTextBoxColumn();
             Cell_Name = new DataGridViewTextBoxColumn();
             Cell_Adress = new DataGridViewTextBoxColumn();
             Cell_PhoneNumber = new DataGridViewTextBoxColumn();
             Cell_Email = new DataGridViewTextBoxColumn();
-            Cell_DNI = new DataGridViewTextBoxColumn();
+            Cell_Carrer = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
             SearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ToolBoxUsers.SuspendLayout();
-            BottomPanel.SuspendLayout();
-            statusStrip1.SuspendLayout();
             MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgUsers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DtvStudents).BeginInit();
             SuspendLayout();
             // 
             // TopPanel
             // 
             TopPanel.BackColor = Color.FromArgb(40, 68, 131);
             TopPanel.Controls.Add(SearchPanel);
-            TopPanel.Controls.Add(LblUsers);
+            TopPanel.Controls.Add(LblStudents);
             TopPanel.Dock = DockStyle.Top;
             TopPanel.Location = new Point(0, 0);
             TopPanel.Name = "TopPanel";
@@ -117,20 +114,21 @@
             TxtSearch.HideSelection = false;
             TxtSearch.Location = new Point(112, 17);
             TxtSearch.Name = "TxtSearch";
-            TxtSearch.PlaceholderText = "Buscar usuario....";
+            TxtSearch.PlaceholderText = "Buscar estudiante....";
             TxtSearch.Size = new Size(332, 32);
             TxtSearch.TabIndex = 4;
+            TxtSearch.TextChanged += TxtSearch_TextChanged;
             // 
-            // LblUsers
+            // LblStudents
             // 
-            LblUsers.AutoSize = true;
-            LblUsers.Font = new Font("Cambria", 24F, FontStyle.Bold);
-            LblUsers.ForeColor = Color.White;
-            LblUsers.Location = new Point(12, 18);
-            LblUsers.Name = "LblUsers";
-            LblUsers.Size = new Size(148, 37);
-            LblUsers.TabIndex = 2;
-            LblUsers.Text = "Usuarios";
+            LblStudents.AutoSize = true;
+            LblStudents.Font = new Font("Cambria", 24F, FontStyle.Bold);
+            LblStudents.ForeColor = Color.White;
+            LblStudents.Location = new Point(12, 18);
+            LblStudents.Name = "LblStudents";
+            LblStudents.Size = new Size(190, 37);
+            LblStudents.TabIndex = 2;
+            LblStudents.Text = "Estudiantes";
             // 
             // panel1
             // 
@@ -144,12 +142,27 @@
             // ToolBoxUsers
             // 
             ToolBoxUsers.Dock = DockStyle.Fill;
-            ToolBoxUsers.Items.AddRange(new ToolStripItem[] { BtnEdit, toolStripSeparator1, BtnDelete, toolStripSeparator2, BtnPrint });
+            ToolBoxUsers.Items.AddRange(new ToolStripItem[] { TsbAddStudent, toolStripSeparator3, BtnEdit, toolStripSeparator1, BtnDelete, toolStripSeparator2, BtnPrint });
             ToolBoxUsers.Location = new Point(0, 0);
             ToolBoxUsers.Name = "ToolBoxUsers";
             ToolBoxUsers.Size = new Size(931, 42);
             ToolBoxUsers.TabIndex = 0;
             ToolBoxUsers.Text = "toolStrip1";
+            // 
+            // TsbAddStudent
+            // 
+            TsbAddStudent.Font = new Font("Cambria", 11F, FontStyle.Bold);
+            TsbAddStudent.Image = (Image)resources.GetObject("TsbAddStudent.Image");
+            TsbAddStudent.ImageTransparentColor = Color.Magenta;
+            TsbAddStudent.Name = "TsbAddStudent";
+            TsbAddStudent.Size = new Size(72, 39);
+            TsbAddStudent.Text = "Nuevo";
+            TsbAddStudent.Click += BtnAddStudent_Click;
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(6, 42);
             // 
             // BtnEdit
             // 
@@ -160,6 +173,7 @@
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(71, 39);
             BtnEdit.Text = "Editar";
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // toolStripSeparator1
             // 
@@ -175,6 +189,7 @@
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(89, 39);
             BtnDelete.Text = "Eliminar";
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // toolStripSeparator2
             // 
@@ -189,96 +204,67 @@
             BtnPrint.Name = "BtnPrint";
             BtnPrint.Size = new Size(92, 39);
             BtnPrint.Text = "Imprimir";
-            // 
-            // BottomPanel
-            // 
-            BottomPanel.Controls.Add(statusStrip1);
-            BottomPanel.Dock = DockStyle.Bottom;
-            BottomPanel.Location = new Point(0, 596);
-            BottomPanel.Name = "BottomPanel";
-            BottomPanel.Size = new Size(931, 34);
-            BottomPanel.TabIndex = 5;
-            // 
-            // statusStrip1
-            // 
-            statusStrip1.BackColor = Color.FromArgb(40, 68, 131);
-            statusStrip1.Dock = DockStyle.Fill;
-            statusStrip1.Items.AddRange(new ToolStripItem[] { BtnMessage, LblMessage });
-            statusStrip1.Location = new Point(0, 0);
-            statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(931, 34);
-            statusStrip1.TabIndex = 4;
-            statusStrip1.Text = "statusStrip1";
-            // 
-            // BtnMessage
-            // 
-            BtnMessage.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            BtnMessage.DropDownItems.AddRange(new ToolStripItem[] { MessageReady });
-            BtnMessage.IconChar = FontAwesome.Sharp.IconChar.Message;
-            BtnMessage.IconColor = Color.White;
-            BtnMessage.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            BtnMessage.ImageTransparentColor = Color.Magenta;
-            BtnMessage.Name = "BtnMessage";
-            BtnMessage.Size = new Size(29, 32);
-            BtnMessage.Text = "Listo";
-            // 
-            // MessageReady
-            // 
-            MessageReady.BackColor = Color.White;
-            MessageReady.ForeColor = Color.Black;
-            MessageReady.Name = "MessageReady";
-            MessageReady.Size = new Size(131, 22);
-            MessageReady.Text = "¡Todo listo!";
-            // 
-            // LblMessage
-            // 
-            LblMessage.ForeColor = Color.White;
-            LblMessage.Name = "LblMessage";
-            LblMessage.Size = new Size(32, 29);
-            LblMessage.Text = "Listo";
+            BtnPrint.Click += BtnPrint_Click;
             // 
             // MainPanel
             // 
-            MainPanel.Controls.Add(dtgUsers);
+            MainPanel.Controls.Add(DtvStudents);
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(0, 112);
             MainPanel.Name = "MainPanel";
             MainPanel.Padding = new Padding(2);
-            MainPanel.Size = new Size(931, 484);
+            MainPanel.Size = new Size(931, 518);
             MainPanel.TabIndex = 6;
             // 
-            // dtgUsers
+            // DtvStudents
             // 
-            dtgUsers.AllowUserToAddRows = false;
-            dtgUsers.AllowUserToDeleteRows = false;
-            dtgUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgUsers.BackgroundColor = Color.White;
-            dtgUsers.BorderStyle = BorderStyle.None;
-            dtgUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            DtvStudents.AllowUserToAddRows = false;
+            DtvStudents.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dtgUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgUsers.Columns.AddRange(new DataGridViewColumn[] { Cell_ID, Cell_Name, Cell_Adress, Cell_PhoneNumber, Cell_Email, Cell_DNI });
-            dtgUsers.Dock = DockStyle.Fill;
-            dtgUsers.Location = new Point(2, 2);
-            dtgUsers.Name = "dtgUsers";
-            dtgUsers.ReadOnly = true;
-            dtgUsers.RowHeadersVisible = false;
-            dtgUsers.Size = new Size(927, 480);
-            dtgUsers.TabIndex = 3;
+            dataGridViewCellStyle1.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ActiveBorder;
+            DtvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            DtvStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DtvStudents.BackgroundColor = Color.White;
+            DtvStudents.BorderStyle = BorderStyle.None;
+            DtvStudents.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DtvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            DtvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DtvStudents.Columns.AddRange(new DataGridViewColumn[] { Cell_Carnet, Cell_Name, Cell_Adress, Cell_PhoneNumber, Cell_Email, Cell_Carrer });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle3.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.WindowFrame;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            DtvStudents.DefaultCellStyle = dataGridViewCellStyle3;
+            DtvStudents.Dock = DockStyle.Fill;
+            DtvStudents.Location = new Point(2, 2);
+            DtvStudents.MultiSelect = false;
+            DtvStudents.Name = "DtvStudents";
+            DtvStudents.ReadOnly = true;
+            DtvStudents.RowHeadersVisible = false;
+            DtvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DtvStudents.Size = new Size(927, 514);
+            DtvStudents.TabIndex = 3;
+            DtvStudents.SelectionChanged += DtvStudents_SelectionChanged;
             // 
-            // Cell_ID
+            // Cell_Carnet
             // 
-            Cell_ID.HeaderText = "ID";
-            Cell_ID.Name = "Cell_ID";
-            Cell_ID.ReadOnly = true;
+            Cell_Carnet.HeaderText = "Carnet";
+            Cell_Carnet.Name = "Cell_Carnet";
+            Cell_Carnet.ReadOnly = true;
             // 
             // Cell_Name
             // 
@@ -304,24 +290,24 @@
             Cell_Email.Name = "Cell_Email";
             Cell_Email.ReadOnly = true;
             // 
-            // Cell_DNI
+            // Cell_Carrer
             // 
-            Cell_DNI.HeaderText = "Cedula de Identidad";
-            Cell_DNI.Name = "Cell_DNI";
-            Cell_DNI.ReadOnly = true;
+            Cell_Carrer.HeaderText = "Carrera";
+            Cell_Carrer.Name = "Cell_Carrer";
+            Cell_Carrer.ReadOnly = true;
             // 
-            // Users
+            // MainFormStudents
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(931, 630);
             Controls.Add(MainPanel);
-            Controls.Add(BottomPanel);
             Controls.Add(panel1);
             Controls.Add(TopPanel);
-            Name = "Users";
+            Name = "MainFormStudents";
             Text = "Users";
+            Load += MainFormStudents_Load;
             TopPanel.ResumeLayout(false);
             TopPanel.PerformLayout();
             SearchPanel.ResumeLayout(false);
@@ -331,12 +317,8 @@
             panel1.PerformLayout();
             ToolBoxUsers.ResumeLayout(false);
             ToolBoxUsers.PerformLayout();
-            BottomPanel.ResumeLayout(false);
-            BottomPanel.PerformLayout();
-            statusStrip1.ResumeLayout(false);
-            statusStrip1.PerformLayout();
             MainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgUsers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DtvStudents).EndInit();
             ResumeLayout(false);
         }
 
@@ -344,29 +326,26 @@
 
         private Panel TopPanel;
         private TextBox TxtSearch;
-        private Label LblUsers;
+        private Label LblStudents;
         private Panel UsernamePanel;
         private Panel SearchPanel;
         private Panel panel1;
         private ToolStrip ToolBoxUsers;
         private ToolStripButton BtnEdit;
-        private Panel BottomPanel;
-        private StatusStrip statusStrip1;
-        private FontAwesome.Sharp.IconDropDownButton BtnMessage;
-        private ToolStripStatusLabel LblMessage;
         private Panel MainPanel;
-        private DataGridView dtgUsers;
-        private DataGridViewTextBoxColumn Cell_ID;
-        private DataGridViewTextBoxColumn Cell_Name;
-        private DataGridViewTextBoxColumn Cell_Adress;
-        private DataGridViewTextBoxColumn Cell_PhoneNumber;
-        private DataGridViewTextBoxColumn Cell_Email;
-        private DataGridViewTextBoxColumn Cell_DNI;
+        private DataGridView DtvStudents;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton BtnDelete;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton BtnPrint;
-        private ToolStripMenuItem MessageReady;
         private PictureBox pictureBox1;
+        private ToolStripButton TsbAddStudent;
+        private ToolStripSeparator toolStripSeparator3;
+        private DataGridViewTextBoxColumn Cell_Carnet;
+        private DataGridViewTextBoxColumn Cell_Name;
+        private DataGridViewTextBoxColumn Cell_Adress;
+        private DataGridViewTextBoxColumn Cell_PhoneNumber;
+        private DataGridViewTextBoxColumn Cell_Email;
+        private DataGridViewTextBoxColumn Cell_Carrer;
     }
 }

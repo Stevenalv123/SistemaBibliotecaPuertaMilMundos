@@ -6,10 +6,10 @@ namespace SistemaBiblioteca
         // Open the form of users
         private async void ShowUsers(object sender, EventArgs e)
         {
-            if (IsFormOpen(typeof(UserForm))) return;
+            if (IsFormOpen(typeof(MainFormStudents))) return;
             OpenForm(new LoadingForm());
             await Task.Run(() => ShowLoading());
-            OpenForm(new UserForm());
+            OpenForm(new MainFormStudents());
         }
 
         // Open the form of books

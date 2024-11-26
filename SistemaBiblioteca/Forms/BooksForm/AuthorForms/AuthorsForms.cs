@@ -17,7 +17,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
         {
             InitializeComponent();
             authors = LoadAuthors();
-            filteredAuthors = new List<Author>(authors); // Copia inicial
+            filteredAuthors = new List<Author>(authors);
             this.selectedAuthors = selectedAuthors;
         }
 

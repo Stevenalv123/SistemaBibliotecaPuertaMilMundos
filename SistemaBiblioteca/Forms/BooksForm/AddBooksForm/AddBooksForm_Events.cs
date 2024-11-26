@@ -36,7 +36,7 @@ namespace SistemaBiblioteca.Forms.Books
                 }
 
                 Book book = new Book(title, authors, categorie, isbn, editorial, yearPublication, stock, coverImage, pages);
-                book.AddBook(books);
+                books.Add(book);
                 this.DialogResult = DialogResult.OK;
             }
             catch (Exception)

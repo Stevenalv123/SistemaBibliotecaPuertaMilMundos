@@ -137,7 +137,7 @@ namespace SistemaBiblioteca.Forms
                 viewButton.Click += (s, e) =>
                 {
                     var clickedBook = (Book)((Button)s).Tag;
-                    MessageBox.Show($"Título: {clickedBook.Title}\nAutor(es): {string.Join(", ", clickedBook.Author.Select(a => a.Name))}\nCategoría: {clickedBook.Categorie.Name}\nEstado: {clickedBook.BookState}\nPáginas: {clickedBook.Pages}\nISBN: {clickedBook.ISBN}", "Detalles del Libro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 };
 
                 cardPanel.Controls.Add(viewButton);

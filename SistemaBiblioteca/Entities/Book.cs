@@ -14,7 +14,6 @@ public enum State
 }
 public class Book
 {
-    public string Id_Book { get; set; }
     public string Title { get; set; }
     public List<Author> Author{ get; set; }
     public Categorie Categorie { get; set; }
@@ -30,7 +29,6 @@ public class Book
     private static int counterBook = 1;
     public Book(string title, List<Author> author, Categorie categorie, string iSBN, Editorial editorial, int yearPublication, int stock, Image cover, int pages)
     {
-        Id_Book = GetId_Book();
         Title = title;
         Author = author;
         Categorie = categorie;
@@ -43,21 +41,13 @@ public class Book
         Pages = pages;
     }
 
-    private string GetId_Book()
-    {
-        string id = $"L{counterBook.ToString("D3")}";
-        IncrementCounter();
-        return id;
 
-    }
-
-    private static void IncrementCounter()
+    public override string ToString()
     {
-        counterBook++;
-    }
-
-    public static void InitializeCounter(int maxId)
-    {
-        counterBook = maxId + 1;
+        return $"Titulo: {Title}," +
+               $"Autor: {Author}," +
+               $"Categoria: {Categorie}," +
+               $"ISBN: {ISBN}," +
+               $"Editorial";
     }
 }

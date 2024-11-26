@@ -12,7 +12,7 @@ public enum State
     Reparacion,
     Perdido
 }
-public class Book:IBook
+public class Book
 {
     public string Id_Book { get; set; }
     public string Title { get; set; }
@@ -59,25 +59,5 @@ public class Book:IBook
     public static void InitializeCounter(int maxId)
     {
         counterBook = maxId + 1;
-    }
-
-    public void GetBook()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void AddBook(List<Book> books)
-    {
-        books.Add(this);
-    }
-
-    public void DeleteBook(List<Book> books)
-    {
-        books.Remove(this);
-    }
-
-    public void UpdateBook()
-    {
-        throw new NotImplementedException();
     }
 }

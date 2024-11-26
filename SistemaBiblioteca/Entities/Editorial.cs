@@ -14,6 +14,7 @@ namespace SistemaBiblioteca.Entities
         public string Phone_Number { get; set; } 
         public string Email { get; set; }
 
+        private static int counterEditorials = 1;
         public Editorial(string name, string adress, string phone_Number, string email)
         {
             Id_Editorial = GetId_Editorial();
@@ -23,15 +24,19 @@ namespace SistemaBiblioteca.Entities
             Email = email;
         }
 
-        private int counterEditorial = 1;
         private string GetId_Editorial()
         {
-            return $"E{counterEditorial.ToString("D3")}";
+            return $"E{counterEditorials.ToString("D3")}";
         }
 
-        private void IncrementCounter()
+        private static void IncrementCounter()
         {
-            counterEditorial++;
+            counterEditorials++;
+        }
+
+        public static void InitializeCounter(int maxId)
+        {
+            counterEditorials = maxId + 1;
         }
     }
 }

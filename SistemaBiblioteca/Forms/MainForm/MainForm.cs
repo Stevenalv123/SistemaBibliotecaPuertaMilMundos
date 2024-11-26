@@ -12,13 +12,5 @@ namespace SistemaBiblioteca
             Login login = new Login();
             login.Close();
         }
-
-        private async void ShowDevolutions(object sender, EventArgs e)
-        {
-            if (IsFormOpen(typeof(DevolutionForm))) return;
-            OpenForm(new LoadingForm());
-            await Task.Run(() => ShowLoading());
-            OpenForm(new DevolutionForm());
-        }
     }
 }

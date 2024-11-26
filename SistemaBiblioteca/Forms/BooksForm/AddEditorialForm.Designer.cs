@@ -79,7 +79,7 @@
             MtbPhoneNumber.Font = new Font("Cambria", 15.75F);
             MtbPhoneNumber.HidePromptOnLeave = true;
             MtbPhoneNumber.Location = new Point(192, 95);
-            MtbPhoneNumber.Mask = "(999)000-0000";
+            MtbPhoneNumber.Mask = "(999)0000-0000";
             MtbPhoneNumber.Name = "MtbPhoneNumber";
             MtbPhoneNumber.PromptChar = ' ';
             MtbPhoneNumber.RejectInputOnFirstFailure = true;

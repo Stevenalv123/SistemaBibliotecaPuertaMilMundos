@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SistemaBiblioteca.Entities
+﻿namespace SistemaBiblioteca.Entities
 {
     public class Categorie
     {
         public string Id_Categorie { get; set; }
         public string Name { get; set; }
+
+        private static int counterCategorie = 1;
 
         public Categorie(string name)
         {
@@ -17,18 +13,21 @@ namespace SistemaBiblioteca.Entities
             Name = name;
         }
 
-        private int counterCategorie = 1;
         private string GetId_Categorie()
         {
             string id = $"C{counterCategorie.ToString("D3")}";
             IncrementCounter();
             return id;
-
         }
 
-        private void IncrementCounter()
+        private static void IncrementCounter()
         {
             counterCategorie++;
+        }
+
+        public static void InitializeCounter(int maxId)
+        {
+            counterCategorie = maxId + 1;
         }
     }
 }

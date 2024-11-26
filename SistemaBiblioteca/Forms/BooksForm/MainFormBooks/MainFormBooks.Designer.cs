@@ -37,11 +37,7 @@
             panel1 = new Panel();
             ToolBoxUsers = new ToolStrip();
             BtnAddBook = new ToolStripButton();
-            toolStripSeparator3 = new ToolStripSeparator();
-            BtnEdit = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            BtnDelete = new ToolStripButton();
-            toolStripSeparator2 = new ToolStripSeparator();
             BtnPrint = new ToolStripButton();
             TopPanel = new Panel();
             SearchPanel = new Panel();
@@ -119,7 +115,7 @@
             // ToolBoxUsers
             // 
             ToolBoxUsers.Dock = DockStyle.Fill;
-            ToolBoxUsers.Items.AddRange(new ToolStripItem[] { BtnAddBook, toolStripSeparator3, BtnEdit, toolStripSeparator1, BtnDelete, toolStripSeparator2, BtnPrint });
+            ToolBoxUsers.Items.AddRange(new ToolStripItem[] { BtnAddBook, toolStripSeparator1, BtnPrint });
             ToolBoxUsers.Location = new Point(0, 0);
             ToolBoxUsers.Name = "ToolBoxUsers";
             ToolBoxUsers.Size = new Size(931, 42);
@@ -136,40 +132,10 @@
             BtnAddBook.Text = "Agregar";
             BtnAddBook.Click += AddNewBook;
             // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 42);
-            // 
-            // BtnEdit
-            // 
-            BtnEdit.Enabled = false;
-            BtnEdit.Font = new Font("Cambria", 11F, FontStyle.Bold);
-            BtnEdit.Image = (Image)resources.GetObject("BtnEdit.Image");
-            BtnEdit.ImageTransparentColor = Color.Magenta;
-            BtnEdit.Name = "BtnEdit";
-            BtnEdit.Size = new Size(71, 39);
-            BtnEdit.Text = "Editar";
-            // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 42);
-            // 
-            // BtnDelete
-            // 
-            BtnDelete.Enabled = false;
-            BtnDelete.Font = new Font("Cambria", 11F, FontStyle.Bold);
-            BtnDelete.Image = (Image)resources.GetObject("BtnDelete.Image");
-            BtnDelete.ImageTransparentColor = Color.Magenta;
-            BtnDelete.Name = "BtnDelete";
-            BtnDelete.Size = new Size(89, 39);
-            BtnDelete.Text = "Eliminar";
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 42);
             // 
             // BtnPrint
             // 
@@ -294,10 +260,7 @@
         private ToolStripStatusLabel LblMessage;
         private Panel panel1;
         private ToolStrip ToolBoxUsers;
-        private ToolStripButton BtnEdit;
         private ToolStripSeparator toolStripSeparator1;
-        private ToolStripButton BtnDelete;
-        private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton BtnPrint;
         private Panel TopPanel;
         private Panel SearchPanel;
@@ -307,7 +270,6 @@
         private Panel UsernamePanel;
         private PrintDialog PrintDialogBooks;
         private ToolStripButton BtnAddBook;
-        private ToolStripSeparator toolStripSeparator3;
         private FlowLayoutPanel FlpBooks;
     }
 }

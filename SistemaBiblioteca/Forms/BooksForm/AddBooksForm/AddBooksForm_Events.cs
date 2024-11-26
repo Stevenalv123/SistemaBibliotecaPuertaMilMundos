@@ -1,34 +1,15 @@
-﻿using Microsoft.Win32;
-using SistemaBiblioteca.Entities;
+﻿using SistemaBiblioteca.Entities;
 using SistemaBiblioteca.Forms.BooksForm;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SistemaBiblioteca.Forms.Books
 {
-    public partial class AddBooks : Form
+    public partial class AddBooks:Form
     {
-        bool correctISBN;
-        public List<Author> selectedAuthors { get; set; }
-        public List<Editorial> editorials { get; set; }
-        public List<Categorie> categories { get; set; }
-        public List<Book> books { get; set; }
-        public AddBooks(List<Book> existingBooks)
-        {
-            InitializeComponent();
-            selectedAuthors = new List<Author>();
-            editorials = new List<Editorial>();
-            categories = new List<Categorie>();
-            books = existingBooks;
-        }
-
         private void BtnSave_Click(object sender, EventArgs e)
         {
             try
@@ -42,19 +23,19 @@ namespace SistemaBiblioteca.Forms.Books
                 State state = State.Disponible;
                 Categorie categorie = (Categorie)CmbCategories.SelectedItem;
                 List<Author> authors = selectedAuthors;
-                string coverPath = PcbCover.ImageLocation; // Obtiene la ubicación del archivo seleccionado
+                string coverPath = PcbCover.ImageLocation;
                 Image coverImage = null;
 
                 if (!string.IsNullOrEmpty(coverPath))
                 {
-                    coverImage = new Bitmap(coverPath); // Carga la imagen en la propiedad
+                    coverImage = new Bitmap(coverPath);
                 }
                 else
                 {
                     coverImage = Properties.Resources.book;
                 }
 
-                Book book = new Book(title, authors, categorie, isbn, editorial, yearPublication, stock, state, coverImage, pages);
+                Book book = new Book(title, authors, categorie, isbn, editorial, yearPublication, stock, coverImage, pages);
                 book.AddBook(books);
                 this.DialogResult = DialogResult.OK;
             }
@@ -62,15 +43,6 @@ namespace SistemaBiblioteca.Forms.Books
             {
                 MessageBox.Show("Ocurrió un error al agregar el libro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void ValidateForm()
-        {
-            bool isTitleValid = !string.IsNullOrEmpty(TxtTitle.Text);
-            bool isISBNValid = correctISBN;
-            bool isCategorieValid = CmbCategories.SelectedItem != null;
-
-            BtnSave.Enabled = isTitleValid && isISBNValid && isCategorieValid;
         }
 
         private void BtnAddAuthor_Click(object sender, EventArgs e)
@@ -87,7 +59,8 @@ namespace SistemaBiblioteca.Forms.Books
             AddEditorialForm addEditorialForm = new AddEditorialForm(editorials);
             if (addEditorialForm.ShowDialog() == DialogResult.OK)
             {
-                // Actualizar el ComboBox con la lista de editoriales actualizada
+                SaveEditorials(editorials);
+
                 CmbEditorial.DataSource = null;
                 CmbEditorial.DataSource = editorials;
                 CmbEditorial.DisplayMember = "Name";
@@ -122,7 +95,8 @@ namespace SistemaBiblioteca.Forms.Books
             AddCategorieForm addCategorieForm = new AddCategorieForm(categories);
             if (addCategorieForm.ShowDialog() == DialogResult.OK)
             {
-                // Actualizar el ComboBox con la lista de categorias actualizada
+                SaveCategories(categories);
+
                 CmbCategories.DataSource = null;
                 CmbCategories.DataSource = categories.ToList();
                 CmbCategories.DisplayMember = "Name";
@@ -139,13 +113,21 @@ namespace SistemaBiblioteca.Forms.Books
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 PcbCover.Image = new Bitmap(openFileDialog.FileName);
-                PcbCover.ImageLocation = openFileDialog.FileName; 
+                PcbCover.ImageLocation = openFileDialog.FileName;
             }
         }
 
         private void AddBooks_Load(object sender, EventArgs e)
         {
+            categories = LoadCategories();
+            CmbCategories.DataSource = categories;
+            CmbCategories.DisplayMember = "Name";
+            CmbCategories.ValueMember = "Id_Categorie";
 
+            editorials = LoadEditorials();
+            CmbEditorial.DataSource = editorials;
+            CmbEditorial.DisplayMember = "Name";
+            CmbEditorial.ValueMember = "Id_Editorial";
         }
     }
 }

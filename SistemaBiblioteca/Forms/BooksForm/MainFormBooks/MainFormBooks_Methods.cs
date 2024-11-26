@@ -1,44 +1,16 @@
-﻿using FontAwesome.Sharp;
-using SistemaBiblioteca.Forms.Books;
-using Syncfusion.Windows.Forms.Tools;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using FontAwesome.Sharp;
+using SistemaBiblioteca.Entities;
+using SistemaBiblioteca.Forms;
 
 namespace SistemaBiblioteca.Forms
 {
-    public partial class MainFormBooks : Form
+    public partial class MainFormBooks:Form
     {
-        List<Book> books;
-        public MainFormBooks()
-        {
-            InitializeComponent();
-            books = new List<Book>();
-        }
-
-        private void BtnPrint_Click(object sender, EventArgs e)
-        {
-            PrintDialogBooks.ShowDialog();
-        }
-
-        private void AddNewBook(object sender, EventArgs e)
-        {
-            AddBooks addBooks = new AddBooks(books);
-            addBooks.ShowDialog();
-            if (addBooks.DialogResult == DialogResult.OK)
-            {
-                ShowAlert();
-                ShowBooksOnFlowLayoutPanel();
-            }
-        }
-
         private async void ShowAlert()
         {
             AlertForm alert = new AlertForm();
@@ -50,12 +22,11 @@ namespace SistemaBiblioteca.Forms
         private void ShowBooksOnFlowLayoutPanel()
         {
             Color redColor = Color.FromArgb(185, 27, 33);
-            Color blueColor=Color.FromArgb(40, 68, 131);
-            FlpBooks.Controls.Clear(); // Limpia el FlowLayoutPanel antes de agregar nuevas tarjetas.
+            Color blueColor = Color.FromArgb(40, 68, 131);
+            FlpBooks.Controls.Clear();
 
             foreach (var book in books)
             {
-                // Crear un Panel que actuará como la "tarjeta"
                 var cardPanel = new Panel
                 {
                     Width = 250,
@@ -66,7 +37,6 @@ namespace SistemaBiblioteca.Forms
                     BackColor = Color.White
                 };
 
-                // PictureBox para la portada del libro
                 var coverPictureBox = new PictureBox
                 {
                     Width = 180,
@@ -77,7 +47,6 @@ namespace SistemaBiblioteca.Forms
                     BorderStyle = BorderStyle.None
                 };
 
-                // Label para el título
                 var titleLabel = new Label
                 {
                     Text = book.Title,
@@ -89,7 +58,6 @@ namespace SistemaBiblioteca.Forms
                     Height = 30
                 };
 
-                // Label para mostrar la categoría
                 var categoryLabel = new Label
                 {
                     Text = $"Categoría: {book.Categorie.Name}",
@@ -101,7 +69,6 @@ namespace SistemaBiblioteca.Forms
                     Height = 25
                 };
 
-                // Label para el estado del libro
                 var stateLabel = new Label
                 {
                     Text = $"Estado: {book.BookState}",
@@ -119,7 +86,7 @@ namespace SistemaBiblioteca.Forms
                     IconColor = Color.White,
                     IconSize = 20,
                     ImageAlign = ContentAlignment.MiddleCenter,
-                    Text="",
+                    Text = "",
                     Size = new Size(80, 60),
                     Dock = DockStyle.Right,
                     BackColor = blueColor,
@@ -128,7 +95,7 @@ namespace SistemaBiblioteca.Forms
                     Cursor = Cursors.Hand
                 };
 
-                var deleteButton=new IconButton
+                var deleteButton = new IconButton
                 {
                     IconChar = IconChar.Trash,
                     IconColor = Color.White,
@@ -153,7 +120,6 @@ namespace SistemaBiblioteca.Forms
                 buttonPanel.Controls.Add(editButton);
                 buttonPanel.Controls.Add(deleteButton);
 
-                // Botón para ver detalles
                 var viewButton = new Button
                 {
                     Text = "Ver detalles",
@@ -168,14 +134,12 @@ namespace SistemaBiblioteca.Forms
                     Cursor = Cursors.Hand
                 };
 
-                // Evento click para el botón
                 viewButton.Click += (s, e) =>
                 {
                     var clickedBook = (Book)((Button)s).Tag;
                     MessageBox.Show($"Título: {clickedBook.Title}\nAutor(es): {string.Join(", ", clickedBook.Author.Select(a => a.Name))}\nCategoría: {clickedBook.Categorie.Name}\nEstado: {clickedBook.BookState}\nPáginas: {clickedBook.Pages}\nISBN: {clickedBook.ISBN}", "Detalles del Libro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 };
 
-                // Agregar controles al Panel de la tarjeta
                 cardPanel.Controls.Add(viewButton);
                 cardPanel.Controls.Add(buttonPanel);
                 cardPanel.Controls.Add(stateLabel);
@@ -183,14 +147,8 @@ namespace SistemaBiblioteca.Forms
                 cardPanel.Controls.Add(titleLabel);
                 cardPanel.Controls.Add(coverPictureBox);
 
-                // Agregar la tarjeta al FlowLayoutPanel
                 FlpBooks.Controls.Add(cardPanel);
             }
-        }
-
-        private void MainFormBooks_Load(object sender, EventArgs e)
-        {
-            ShowBooksOnFlowLayoutPanel();
         }
     }
 }

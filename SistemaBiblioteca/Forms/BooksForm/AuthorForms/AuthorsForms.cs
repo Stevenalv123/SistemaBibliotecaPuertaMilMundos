@@ -104,7 +104,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             }
             else
             {
-                MessageBox.Show("No se encontró el archivo de autores.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
 
             return authors;

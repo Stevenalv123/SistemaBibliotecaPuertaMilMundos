@@ -1,4 +1,7 @@
-﻿namespace SistemaBiblioteca
+﻿using SistemaBiblioteca.Forms.DevolutionsForms;
+using SistemaBiblioteca.Forms;
+
+namespace SistemaBiblioteca
 {
     public partial class MainForm : Form
     {
@@ -34,6 +37,14 @@
                 }
             }
             return false;
+        }
+
+        private async void ShowDevolutions(object sender, EventArgs e)
+        {
+            if (IsFormOpen(typeof(DevolutionForm))) return;
+            OpenForm(new LoadingForm());
+            await Task.Run(() => ShowLoading());
+            OpenForm(new DevolutionForm());
         }
     }
 }

@@ -16,26 +16,16 @@ namespace SistemaBiblioteca.Forms.Books
             {
                 string title = TxtTitle.Text;
                 string isbn = MtbISBN.Text;
-                Editorial editorial = editorials != null ? editorials.Find(e => e.Name == CmbEditorial.Text) : null;
+                Editorial editorial = (Editorial)CmbEditorial.SelectedItem;
                 int yearPublication = Convert.ToInt32(MtbPublicationYear.Text);
                 int stock = (int)NudStock.Value;
                 int pages = (int)NudPages.Value;
                 State state = State.Disponible;
                 Categorie categorie = (Categorie)CmbCategories.SelectedItem;
-                List<Author> authors = selectedAuthors;
+                string authors = TxtAuthors.Text;
                 string coverPath = PcbCover.ImageLocation;
-                Image coverImage = null;
 
-                if (!string.IsNullOrEmpty(coverPath))
-                {
-                    coverImage = new Bitmap(coverPath);
-                }
-                else
-                {
-                    coverImage = Properties.Resources.book;
-                }
-
-                Book book = new Book(title, authors, categorie, isbn, editorial, yearPublication, stock, coverImage, pages);
+                Book book = new Book(title, authors, categorie, isbn, editorial, yearPublication, stock, state, pages);
                 books.Add(book);
                 this.DialogResult = DialogResult.OK;
             }
@@ -100,6 +90,7 @@ namespace SistemaBiblioteca.Forms.Books
                 CmbCategories.DataSource = null;
                 CmbCategories.DataSource = categories.ToList();
                 CmbCategories.DisplayMember = "Name";
+                CmbCategories.ValueMember = "Name";
             }
         }
 
@@ -122,12 +113,10 @@ namespace SistemaBiblioteca.Forms.Books
             categories = LoadCategories();
             CmbCategories.DataSource = categories;
             CmbCategories.DisplayMember = "Name";
-            CmbCategories.ValueMember = "Id_Categorie";
 
             editorials = LoadEditorials();
             CmbEditorial.DataSource = editorials;
             CmbEditorial.DisplayMember = "Name";
-            CmbEditorial.ValueMember = "Id_Editorial";
         }
     }
 }

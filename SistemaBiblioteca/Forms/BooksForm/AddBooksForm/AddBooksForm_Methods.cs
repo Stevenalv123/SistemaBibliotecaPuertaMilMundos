@@ -42,8 +42,6 @@ namespace SistemaBiblioteca.Forms.Books
                 }
             }
 
-            int maxId = 0;
-
             try
             {
                 using (StreamReader reader = new StreamReader(rutaArchivo))
@@ -53,20 +51,11 @@ namespace SistemaBiblioteca.Forms.Books
                     {
                         string[] datos = line.Split(',');
 
-                        if (datos.Length == 2)
+                        if (datos.Length == 1)
                         {
-                            string idCategorie = datos[0].Trim();
-                            string name = datos[1].Trim();
+                            string name = datos[0].Trim();
 
-                            categories.Add(new Categorie(name)
-                            {
-                                Id_Categorie = idCategorie
-                            });
-
-                            if (int.TryParse(idCategorie.Substring(1), out int numericId))
-                            {
-                                maxId = Math.Max(maxId, numericId);
-                            }
+                            categories.Add(new Categorie(name));
                         }
                     }
                 }
@@ -75,8 +64,6 @@ namespace SistemaBiblioteca.Forms.Books
             {
                 MessageBox.Show($"Error al cargar las categorías: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            Categorie.InitializeCounter(maxId);
 
             return categories;
         }
@@ -97,7 +84,7 @@ namespace SistemaBiblioteca.Forms.Books
                 {
                     foreach (var category in categories)
                     {
-                        writer.WriteLine($"{category.Id_Categorie},{category.Name}");
+                        writer.WriteLine($"{category.Name}");
                     }
                 }
             }
@@ -150,15 +137,8 @@ namespace SistemaBiblioteca.Forms.Books
                             string phone = datos[3].Trim();
                             string email = datos[4].Trim();
 
-                            editorials.Add(new Editorial(name, adress, phone, email)
-                            {
-                                Id_Editorial = idEditorial
-                            });
+                            editorials.Add(new Editorial(name, adress, phone, email){});
 
-                            if (int.TryParse(idEditorial.Substring(1), out int numericId))
-                            {
-                                maxId = Math.Max(maxId, numericId);
-                            }
                         }
                     }
                 }
@@ -167,8 +147,6 @@ namespace SistemaBiblioteca.Forms.Books
             {
                 MessageBox.Show($"Error al cargar las editoriales: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            Categorie.InitializeCounter(maxId);
 
             return editorials;
         }
@@ -189,7 +167,7 @@ namespace SistemaBiblioteca.Forms.Books
                 {
                     foreach (var editorial in editorials)
                     {
-                        writer.WriteLine($"{editorial.Id_Editorial},{editorial.Name}, {editorial.Adress}, {editorial.Phone_Number},{editorial.Email}");
+                        writer.WriteLine($"{editorial.Name}, {editorial.Adress}, {editorial.Phone_Number},{editorial.Email}");
                     }
                 }
             }

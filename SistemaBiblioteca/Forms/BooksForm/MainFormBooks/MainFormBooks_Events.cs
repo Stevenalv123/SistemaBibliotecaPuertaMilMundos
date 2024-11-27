@@ -12,6 +12,7 @@ namespace SistemaBiblioteca.Forms
     {
         private void MainFormBooks_Load(object sender, EventArgs e)
         {
+            LoadBooksFromFile();
             ShowBooksOnFlowLayoutPanel();
         }
 
@@ -26,7 +27,9 @@ namespace SistemaBiblioteca.Forms
             addBooks.ShowDialog();
             if (addBooks.DialogResult == DialogResult.OK)
             {
+                SaveBooksToFile();
                 ShowAlert();
+                LoadBooksFromFile();
                 ShowBooksOnFlowLayoutPanel();
             }
         }

@@ -15,19 +15,18 @@ public enum State
 public class Book
 {
     public string Title { get; set; }
-    public List<Author> Author{ get; set; }
+    public string Author{ get; set; }
     public Categorie Categorie { get; set; }
     public string ISBN { get; set; }
     public Editorial Editorial { get; set; }
     public int YearPublication { get; set; }
     public int Stock { get; set; }
     public State BookState { get; set; }
-    public Image Cover {  get; set; }
     public int Pages { get; set; }
 
 
     private static int counterBook = 1;
-    public Book(string title, List<Author> author, Categorie categorie, string iSBN, Editorial editorial, int yearPublication, int stock, Image cover, int pages)
+    public Book(string title, string author, Categorie categorie, string iSBN, Editorial editorial, int yearPublication, int stock, State state, int pages)
     {
         Title = title;
         Author = author;
@@ -37,17 +36,20 @@ public class Book
         YearPublication = yearPublication;
         Stock = stock;
         BookState = State.Disponible;
-        Cover = cover;
         Pages = pages;
     }
 
 
     public override string ToString()
     {
-        return $"Titulo: {Title}," +
-               $"Autor: {Author}," +
-               $"Categoria: {Categorie}," +
-               $"ISBN: {ISBN}," +
-               $"Editorial";
+        return $"Titulo: {Title}" +
+               $"\nAutor: {Author}" +
+               $"\nCategoria: {Categorie.Name}" +
+               $"\nISBN: {ISBN}" +
+               $"\nEditorial: {Editorial.Name}" +
+               $"\nAño de publicacion: {YearPublication}" +
+               $"\nStock: {Stock}" +
+               $"\nEstado: {BookState}" +
+               $"\nNumero de Paginas: {Pages}";
     }
 }

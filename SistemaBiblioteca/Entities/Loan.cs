@@ -2,19 +2,27 @@
 
 public  class Loan
 { 
-    public string Id_Loan { get; set; }
-    public Student Id_User { get; set; }
-    public Book Id_Book { get; set; }
+    public string Loan_Code { get; set; }
+    public Student Student_name { get; set; }
+    public string Books { get; set; }
     public DateTime Loan_Date { get; set; }
     public DateTime Return_Date { get; set; }
 
-    public Loan(string id_Prestamo, Student id_User, Book id_Book, DateTime fechaPrestamo, DateTime fechaDevolucion)
+
+    private static int currentLoanNumber = 0;
+    public Loan(Student student_name, string books, DateTime loan_date, DateTime return_date)
     {
-        Id_Loan = id_Prestamo;
-        Id_User = id_User;
-        Id_Book = id_Book;
-        Loan_Date = fechaPrestamo;
-        Return_Date = fechaDevolucion;
+        Loan_Code = GenerateLoanCode();
+        Student_name = student_name;
+        Books = books;
+        Loan_Date = loan_date;
+        Return_Date = return_date;
+    }
+
+    public static string GenerateLoanCode()
+    {
+        currentLoanNumber++;
+        return $"P{currentLoanNumber:D3}";
     }
 }
 

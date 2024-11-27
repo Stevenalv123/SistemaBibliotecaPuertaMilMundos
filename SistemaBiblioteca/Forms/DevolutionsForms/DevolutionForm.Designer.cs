@@ -28,10 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevolutionForm));
             panel2 = new Panel();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            panel3 = new Panel();
+            DtvLoans = new DataGridView();
+            Cell_Codigo = new DataGridViewTextBoxColumn();
+            Cell_Student = new DataGridViewTextBoxColumn();
+            Cell_Book = new DataGridViewTextBoxColumn();
+            Cell_LoanDate = new DataGridViewTextBoxColumn();
+            Cell_LoanDevolutiondate = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             ToolBoxUsers = new ToolStrip();
             BtnAddBook = new ToolStripButton();
@@ -42,11 +52,11 @@
             toolStripSeparator2 = new ToolStripSeparator();
             BtnPrint = new ToolStripButton();
             TopPanel = new Panel();
+            label2 = new Label();
             SearchPanel = new Panel();
             pictureBox1 = new PictureBox();
             TxtSearch = new TextBox();
             UsernamePanel = new Panel();
-            LblUsers = new Label();
             tabPage2 = new TabPage();
             panel7 = new Panel();
             toolStrip1 = new ToolStrip();
@@ -58,14 +68,16 @@
             toolStripSeparator6 = new ToolStripSeparator();
             toolStripButton4 = new ToolStripButton();
             panel4 = new Panel();
+            LblUsers = new Label();
             panel5 = new Panel();
             pictureBox2 = new PictureBox();
             textBox1 = new TextBox();
             panel6 = new Panel();
-            label1 = new Label();
             panel2.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DtvLoans).BeginInit();
             panel1.SuspendLayout();
             ToolBoxUsers.SuspendLayout();
             TopPanel.SuspendLayout();
@@ -94,6 +106,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Font = new Font("Cambria", 14F, FontStyle.Bold);
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -102,15 +115,99 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(panel3);
             tabPage1.Controls.Add(panel1);
             tabPage1.Controls.Add(TopPanel);
-            tabPage1.Location = new Point(4, 24);
+            tabPage1.Font = new Font("Cambria", 14F, FontStyle.Bold);
+            tabPage1.Location = new Point(4, 31);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 3, 3, 3);
-            tabPage1.Size = new Size(923, 602);
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(923, 595);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Devoluciones";
+            tabPage1.Text = "Prestamos";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(DtvLoans);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(3, 119);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(917, 473);
+            panel3.TabIndex = 10;
+            // 
+            // DtvLoans
+            // 
+            DtvLoans.AllowUserToAddRows = false;
+            DtvLoans.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ActiveBorder;
+            DtvLoans.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            DtvLoans.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DtvLoans.BackgroundColor = Color.White;
+            DtvLoans.BorderStyle = BorderStyle.None;
+            DtvLoans.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DtvLoans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            DtvLoans.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DtvLoans.Columns.AddRange(new DataGridViewColumn[] { Cell_Codigo, Cell_Student, Cell_Book, Cell_LoanDate, Cell_LoanDevolutiondate });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle3.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.WindowFrame;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            DtvLoans.DefaultCellStyle = dataGridViewCellStyle3;
+            DtvLoans.Dock = DockStyle.Fill;
+            DtvLoans.Location = new Point(0, 0);
+            DtvLoans.MultiSelect = false;
+            DtvLoans.Name = "DtvLoans";
+            DtvLoans.ReadOnly = true;
+            DtvLoans.RowHeadersVisible = false;
+            DtvLoans.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DtvLoans.Size = new Size(917, 473);
+            DtvLoans.TabIndex = 5;
+            // 
+            // Cell_Codigo
+            // 
+            Cell_Codigo.HeaderText = "Codigo";
+            Cell_Codigo.Name = "Cell_Codigo";
+            Cell_Codigo.ReadOnly = true;
+            // 
+            // Cell_Student
+            // 
+            Cell_Student.HeaderText = "Estudiante";
+            Cell_Student.Name = "Cell_Student";
+            Cell_Student.ReadOnly = true;
+            // 
+            // Cell_Book
+            // 
+            Cell_Book.HeaderText = "Libro";
+            Cell_Book.Name = "Cell_Book";
+            Cell_Book.ReadOnly = true;
+            // 
+            // Cell_LoanDate
+            // 
+            Cell_LoanDate.HeaderText = "Fecha de Prestamo";
+            Cell_LoanDate.Name = "Cell_LoanDate";
+            Cell_LoanDate.ReadOnly = true;
+            // 
+            // Cell_LoanDevolutiondate
+            // 
+            Cell_LoanDevolutiondate.HeaderText = "Fecha de devolucion";
+            Cell_LoanDevolutiondate.Name = "Cell_LoanDevolutiondate";
+            Cell_LoanDevolutiondate.ReadOnly = true;
             // 
             // panel1
             // 
@@ -140,6 +237,7 @@
             BtnAddBook.Name = "BtnAddBook";
             BtnAddBook.Size = new Size(88, 43);
             BtnAddBook.Text = "Agregar";
+            BtnAddBook.Click += BtnAddBook_Click;
             // 
             // toolStripSeparator3
             // 
@@ -188,13 +286,24 @@
             // TopPanel
             // 
             TopPanel.BackColor = Color.FromArgb(40, 68, 131);
+            TopPanel.Controls.Add(label2);
             TopPanel.Controls.Add(SearchPanel);
-            TopPanel.Controls.Add(LblUsers);
             TopPanel.Dock = DockStyle.Top;
             TopPanel.Location = new Point(3, 3);
             TopPanel.Name = "TopPanel";
             TopPanel.Size = new Size(917, 70);
             TopPanel.TabIndex = 8;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Cambria", 24F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(5, 13);
+            label2.Name = "label2";
+            label2.Size = new Size(174, 37);
+            label2.TabIndex = 4;
+            label2.Text = "Prestamos";
             // 
             // SearchPanel
             // 
@@ -227,7 +336,7 @@
             TxtSearch.HideSelection = false;
             TxtSearch.Location = new Point(112, 18);
             TxtSearch.Name = "TxtSearch";
-            TxtSearch.PlaceholderText = "Buscar Devoluciones....";
+            TxtSearch.PlaceholderText = "Buscar registro";
             TxtSearch.Size = new Size(332, 32);
             TxtSearch.TabIndex = 11;
             // 
@@ -239,27 +348,16 @@
             UsernamePanel.Size = new Size(332, 1);
             UsernamePanel.TabIndex = 12;
             // 
-            // LblUsers
-            // 
-            LblUsers.AutoSize = true;
-            LblUsers.Font = new Font("Cambria", 24F, FontStyle.Bold);
-            LblUsers.ForeColor = Color.White;
-            LblUsers.Location = new Point(12, 18);
-            LblUsers.Name = "LblUsers";
-            LblUsers.Size = new Size(213, 37);
-            LblUsers.TabIndex = 2;
-            LblUsers.Text = "Devoluciones";
-            // 
             // tabPage2
             // 
             tabPage2.Controls.Add(panel7);
             tabPage2.Controls.Add(panel4);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(923, 602);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Prestamos";
+            tabPage2.Text = "Devoluciones";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel7
@@ -339,13 +437,24 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(40, 68, 131);
+            panel4.Controls.Add(LblUsers);
             panel4.Controls.Add(panel5);
-            panel4.Controls.Add(label1);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(3, 3);
             panel4.Name = "panel4";
             panel4.Size = new Size(917, 70);
             panel4.TabIndex = 9;
+            // 
+            // LblUsers
+            // 
+            LblUsers.AutoSize = true;
+            LblUsers.Font = new Font("Cambria", 24F, FontStyle.Bold);
+            LblUsers.ForeColor = Color.White;
+            LblUsers.Location = new Point(5, 17);
+            LblUsers.Name = "LblUsers";
+            LblUsers.Size = new Size(213, 37);
+            LblUsers.TabIndex = 14;
+            LblUsers.Text = "Devoluciones";
             // 
             // panel5
             // 
@@ -378,7 +487,7 @@
             textBox1.HideSelection = false;
             textBox1.Location = new Point(112, 18);
             textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Buscar Prestamos....";
+            textBox1.PlaceholderText = "Buscar registro";
             textBox1.Size = new Size(332, 32);
             textBox1.TabIndex = 11;
             // 
@@ -390,17 +499,6 @@
             panel6.Size = new Size(332, 1);
             panel6.TabIndex = 12;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Cambria", 24F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(12, 18);
-            label1.Name = "label1";
-            label1.Size = new Size(174, 37);
-            label1.TabIndex = 2;
-            label1.Text = "Prestamos";
-            // 
             // DevolutionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -409,9 +507,12 @@
             Controls.Add(panel2);
             Name = "DevolutionForm";
             Text = "DevolutionForm";
+            Load += DevolutionForm_Load;
             panel2.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DtvLoans).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ToolBoxUsers.ResumeLayout(false);
@@ -452,7 +553,6 @@
         private PictureBox pictureBox1;
         private TextBox TxtSearch;
         private Panel UsernamePanel;
-        private Label LblUsers;
         private TabPage tabPage2;
         private Panel panel7;
         private ToolStrip toolStrip1;
@@ -468,6 +568,14 @@
         private PictureBox pictureBox2;
         private TextBox textBox1;
         private Panel panel6;
-        private Label label1;
+        private Label label2;
+        private Label LblUsers;
+        private Panel panel3;
+        private DataGridView DtvLoans;
+        private DataGridViewTextBoxColumn Cell_Codigo;
+        private DataGridViewTextBoxColumn Cell_Student;
+        private DataGridViewTextBoxColumn Cell_Book;
+        private DataGridViewTextBoxColumn Cell_LoanDate;
+        private DataGridViewTextBoxColumn Cell_LoanDevolutiondate;
     }
 }

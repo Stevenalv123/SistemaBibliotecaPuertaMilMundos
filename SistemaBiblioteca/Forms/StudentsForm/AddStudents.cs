@@ -15,13 +15,13 @@ namespace SistemaBiblioteca.Forms.StudentsForm
     public partial class AddStudents : Form
     {
         private List<Student> students;
-        private Student studentToDelete;
+        private Student studentToUpdate;
 
-        public AddStudents(List<Student> students, Student studentToDelete)
+        public AddStudents(List<Student> students, Student studentToUpdate)
         {
             InitializeComponent();
             this.students = students;
-            this.studentToDelete = studentToDelete;
+            this.studentToUpdate = studentToUpdate;
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -31,39 +31,39 @@ namespace SistemaBiblioteca.Forms.StudentsForm
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {
-            if (studentToDelete == null)
+            if (ValidarEmail() == false)
             {
-                string email = "";
-                string carnet = MtbCarnet.Text;
-                string name = TxtName.Text;
-                string address = TxtAdress.Text;
-                string phoneNumber = MtbTelephone.Text;
-                if (ValidarEmail())
+                if (studentToUpdate == null)
                 {
+                    string email = "";
+                    string carnet = MtbCarnet.Text;
+                    string name = TxtName.Text;
+                    string address = TxtAdress.Text;
+                    string phoneNumber = MtbTelephone.Text;
                     email = TxtEmail.Text;
+                    string carrer = TxtCarrer.Text;
+
+                    Student student = new Student(carnet, name, address, phoneNumber, email, carrer);
+                    students.Add(student);
+
+                    DialogResult = DialogResult.OK;
                 }
-                string carrer = TxtCarrer.Text;
+                else
+                {
+                    studentToUpdate.Carnet = MtbCarnet.Text;
+                    studentToUpdate.Name = TxtName.Text;
+                    studentToUpdate.Address = TxtAdress.Text;
+                    studentToUpdate.PhoneNumber = MtbTelephone.Text;
+                    studentToUpdate.Email = TxtEmail.Text;
+                    studentToUpdate.Carrer = TxtCarrer.Text;
 
-                Student student = new Student(carnet, name, address, phoneNumber, email, carrer);
-                students.Add(student);
-
-                DialogResult = DialogResult.OK;
+                    DialogResult = DialogResult.OK;
+                }
             }
             else
             {
-                studentToDelete.Carnet = MtbCarnet.Text;
-                studentToDelete.Name = TxtName.Text;
-                studentToDelete.Address = TxtAdress.Text;
-                studentToDelete.PhoneNumber = MtbTelephone.Text;
-                studentToDelete.Email = TxtEmail.Text;
-                studentToDelete.Carrer = TxtCarrer.Text;
-
-                if (ValidarEmail())
-                    MessageBox.Show("Estudiante actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.None;
             }
-
-
         }
 
         public bool ValidarEmail()
@@ -82,14 +82,14 @@ namespace SistemaBiblioteca.Forms.StudentsForm
 
         private void AddStudents_Load(object sender, EventArgs e)
         {
-            if(studentToDelete != null)
+            if(studentToUpdate != null)
             {
-                MtbCarnet.Text = studentToDelete.Carnet;
-                TxtName.Text = studentToDelete.Name;
-                TxtAdress.Text = studentToDelete.Address;
-                MtbTelephone.Text = studentToDelete.PhoneNumber;
-                TxtEmail.Text = studentToDelete.Email;
-                TxtCarrer.Text = studentToDelete.Carrer;
+                MtbCarnet.Text = studentToUpdate.Carnet;
+                TxtName.Text = studentToUpdate.Name;
+                TxtAdress.Text = studentToUpdate.Address;
+                MtbTelephone.Text = studentToUpdate.PhoneNumber;
+                TxtEmail.Text = studentToUpdate.Email;
+                TxtCarrer.Text = studentToUpdate.Carrer;
             }
         }
     }

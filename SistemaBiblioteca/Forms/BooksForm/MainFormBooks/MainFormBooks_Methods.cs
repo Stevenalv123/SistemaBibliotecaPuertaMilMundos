@@ -68,20 +68,18 @@ namespace SistemaBiblioteca.Forms
                     {
                         var bookData = line.Split(',');
 
-                        // Verificar que la línea contenga suficientes datos
                         if (bookData.Length >= 8)
                         {
-                            // Crear un nuevo libro a partir de los datos
                             var book = new Book(
-                                bookData[0], // Title
-                                bookData[1], // Author
-                                new Categorie(bookData[2]), // Categorie
-                                bookData[3], // ISBN
-                                new Editorial(bookData[4],"","",""), // Editorial
-                                Convert.ToInt32(bookData[5]), // YearPublication
-                                Convert.ToInt32(bookData[6]), // Stock
-                                (State)Enum.Parse(typeof(State), bookData[7]), // BookState
-                                Convert.ToInt32(bookData[8]) // Pages
+                                bookData[0],
+                                bookData[1], 
+                                new Categorie(bookData[2]),
+                                bookData[3], 
+                                new Editorial(bookData[4],"","",""),
+                                Convert.ToInt32(bookData[5]), 
+                                Convert.ToInt32(bookData[6]),
+                                (State)Enum.Parse(typeof(State), bookData[7]), 
+                                Convert.ToInt32(bookData[8]) 
                             );
 
                             books.Add(book);

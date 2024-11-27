@@ -13,7 +13,7 @@ namespace SistemaBiblioteca.Forms
         private void MainFormBooks_Load(object sender, EventArgs e)
         {
             LoadBooksFromFile();
-            ShowBooksOnFlowLayoutPanel();
+            ShowBooksOnDataGridView();
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace SistemaBiblioteca.Forms
                 SaveBooksToFile();
                 ShowAlert();
                 LoadBooksFromFile();
-                ShowBooksOnFlowLayoutPanel();
+                ShowBooksOnDataGridView();
             }
         }
     }

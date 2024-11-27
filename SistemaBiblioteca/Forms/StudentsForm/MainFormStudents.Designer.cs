@@ -305,6 +305,7 @@
             Controls.Add(MainPanel);
             Controls.Add(panel1);
             Controls.Add(TopPanel);
+            KeyPreview = true;
             Name = "MainFormStudents";
             Text = "Users";
             Load += MainFormStudents_Load;

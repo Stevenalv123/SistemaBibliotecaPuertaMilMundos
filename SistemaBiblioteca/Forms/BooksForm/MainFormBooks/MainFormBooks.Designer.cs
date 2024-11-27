@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormBooks));
-            BottomPanel = new Panel();
-            StatusStripBooks = new StatusStrip();
-            BtnMessage = new FontAwesome.Sharp.IconDropDownButton();
-            MessageReady = new ToolStripMenuItem();
-            LblMessage = new ToolStripStatusLabel();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             ToolBoxUsers = new ToolStrip();
             BtnAddBook = new ToolStripButton();
@@ -46,62 +44,25 @@
             UsernamePanel = new Panel();
             LblUsers = new Label();
             PrintDialogBooks = new PrintDialog();
-            FlpBooks = new FlowLayoutPanel();
-            BottomPanel.SuspendLayout();
-            StatusStripBooks.SuspendLayout();
+            panel2 = new Panel();
+            DtvStudents = new DataGridView();
+            Cell_Title = new DataGridViewTextBoxColumn();
+            Cell_Autor = new DataGridViewTextBoxColumn();
+            Cell_Categorie = new DataGridViewTextBoxColumn();
+            Cell_ISBN = new DataGridViewTextBoxColumn();
+            Cell_Editorial = new DataGridViewTextBoxColumn();
+            Cell_Year = new DataGridViewTextBoxColumn();
+            Cell_Stock = new DataGridViewTextBoxColumn();
+            Cell_State = new DataGridViewTextBoxColumn();
+            Cell_Pages = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ToolBoxUsers.SuspendLayout();
             TopPanel.SuspendLayout();
             SearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DtvStudents).BeginInit();
             SuspendLayout();
-            // 
-            // BottomPanel
-            // 
-            BottomPanel.Controls.Add(StatusStripBooks);
-            BottomPanel.Dock = DockStyle.Bottom;
-            BottomPanel.Location = new Point(0, 596);
-            BottomPanel.Name = "BottomPanel";
-            BottomPanel.Size = new Size(931, 34);
-            BottomPanel.TabIndex = 9;
-            // 
-            // StatusStripBooks
-            // 
-            StatusStripBooks.BackColor = Color.FromArgb(40, 68, 131);
-            StatusStripBooks.Dock = DockStyle.Fill;
-            StatusStripBooks.Items.AddRange(new ToolStripItem[] { BtnMessage, LblMessage });
-            StatusStripBooks.Location = new Point(0, 0);
-            StatusStripBooks.Name = "StatusStripBooks";
-            StatusStripBooks.Size = new Size(931, 34);
-            StatusStripBooks.TabIndex = 4;
-            StatusStripBooks.Text = "statusStrip1";
-            // 
-            // BtnMessage
-            // 
-            BtnMessage.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            BtnMessage.DropDownItems.AddRange(new ToolStripItem[] { MessageReady });
-            BtnMessage.IconChar = FontAwesome.Sharp.IconChar.Message;
-            BtnMessage.IconColor = Color.White;
-            BtnMessage.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            BtnMessage.ImageTransparentColor = Color.Magenta;
-            BtnMessage.Name = "BtnMessage";
-            BtnMessage.Size = new Size(29, 32);
-            BtnMessage.Text = "Listo";
-            // 
-            // MessageReady
-            // 
-            MessageReady.BackColor = Color.White;
-            MessageReady.ForeColor = Color.Black;
-            MessageReady.Name = "MessageReady";
-            MessageReady.Size = new Size(132, 22);
-            MessageReady.Text = "¡Todo listo!";
-            // 
-            // LblMessage
-            // 
-            LblMessage.ForeColor = Color.White;
-            LblMessage.Name = "LblMessage";
-            LblMessage.Size = new Size(32, 29);
-            LblMessage.Text = "Listo";
             // 
             // panel1
             // 
@@ -216,30 +177,125 @@
             // 
             PrintDialogBooks.UseEXDialog = true;
             // 
-            // FlpBooks
+            // panel2
             // 
-            FlpBooks.Dock = DockStyle.Fill;
-            FlpBooks.Location = new Point(0, 112);
-            FlpBooks.Name = "FlpBooks";
-            FlpBooks.Size = new Size(931, 484);
-            FlpBooks.TabIndex = 10;
+            panel2.Controls.Add(DtvStudents);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 112);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(931, 518);
+            panel2.TabIndex = 9;
+            // 
+            // DtvStudents
+            // 
+            DtvStudents.AllowUserToAddRows = false;
+            DtvStudents.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ActiveBorder;
+            DtvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            DtvStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DtvStudents.BackgroundColor = Color.White;
+            DtvStudents.BorderStyle = BorderStyle.None;
+            DtvStudents.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DtvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            DtvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DtvStudents.Columns.AddRange(new DataGridViewColumn[] { Cell_Title, Cell_Autor, Cell_Categorie, Cell_ISBN, Cell_Editorial, Cell_Year, Cell_Stock, Cell_State, Cell_Pages });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle3.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.WindowFrame;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            DtvStudents.DefaultCellStyle = dataGridViewCellStyle3;
+            DtvStudents.Dock = DockStyle.Fill;
+            DtvStudents.Location = new Point(0, 0);
+            DtvStudents.MultiSelect = false;
+            DtvStudents.Name = "DtvStudents";
+            DtvStudents.ReadOnly = true;
+            DtvStudents.RowHeadersVisible = false;
+            DtvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DtvStudents.Size = new Size(931, 518);
+            DtvStudents.TabIndex = 4;
+            // 
+            // Cell_Title
+            // 
+            Cell_Title.HeaderText = "Titulo";
+            Cell_Title.Name = "Cell_Title";
+            Cell_Title.ReadOnly = true;
+            // 
+            // Cell_Autor
+            // 
+            Cell_Autor.HeaderText = "Autor";
+            Cell_Autor.Name = "Cell_Autor";
+            Cell_Autor.ReadOnly = true;
+            // 
+            // Cell_Categorie
+            // 
+            Cell_Categorie.HeaderText = "Categoria";
+            Cell_Categorie.Name = "Cell_Categorie";
+            Cell_Categorie.ReadOnly = true;
+            // 
+            // Cell_ISBN
+            // 
+            Cell_ISBN.HeaderText = "ISBN";
+            Cell_ISBN.Name = "Cell_ISBN";
+            Cell_ISBN.ReadOnly = true;
+            // 
+            // Cell_Editorial
+            // 
+            Cell_Editorial.HeaderText = "Editorial";
+            Cell_Editorial.Name = "Cell_Editorial";
+            Cell_Editorial.ReadOnly = true;
+            // 
+            // Cell_Year
+            // 
+            Cell_Year.HeaderText = "Año de publicacion";
+            Cell_Year.Name = "Cell_Year";
+            Cell_Year.ReadOnly = true;
+            // 
+            // Cell_Stock
+            // 
+            Cell_Stock.HeaderText = "Stock";
+            Cell_Stock.Name = "Cell_Stock";
+            Cell_Stock.ReadOnly = true;
+            // 
+            // Cell_State
+            // 
+            Cell_State.HeaderText = "Estado";
+            Cell_State.Name = "Cell_State";
+            Cell_State.ReadOnly = true;
+            // 
+            // Cell_Pages
+            // 
+            Cell_Pages.HeaderText = "Paginas";
+            Cell_Pages.Name = "Cell_Pages";
+            Cell_Pages.ReadOnly = true;
             // 
             // MainFormBooks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(931, 630);
-            Controls.Add(FlpBooks);
-            Controls.Add(BottomPanel);
+            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(TopPanel);
+            KeyPreview = true;
             Name = "MainFormBooks";
             Text = "Books";
             Load += MainFormBooks_Load;
-            BottomPanel.ResumeLayout(false);
-            BottomPanel.PerformLayout();
-            StatusStripBooks.ResumeLayout(false);
-            StatusStripBooks.PerformLayout();
+            KeyDown += MainFormBooks_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ToolBoxUsers.ResumeLayout(false);
@@ -249,15 +305,12 @@
             SearchPanel.ResumeLayout(false);
             SearchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DtvStudents).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Panel BottomPanel;
-        private StatusStrip StatusStripBooks;
-        private FontAwesome.Sharp.IconDropDownButton BtnMessage;
-        private ToolStripMenuItem MessageReady;
-        private ToolStripStatusLabel LblMessage;
         private Panel panel1;
         private ToolStrip ToolBoxUsers;
         private ToolStripSeparator toolStripSeparator1;
@@ -270,6 +323,16 @@
         private Panel UsernamePanel;
         private PrintDialog PrintDialogBooks;
         private ToolStripButton BtnAddBook;
-        private FlowLayoutPanel FlpBooks;
+        private Panel panel2;
+        private DataGridView DtvStudents;
+        private DataGridViewTextBoxColumn Cell_Title;
+        private DataGridViewTextBoxColumn Cell_Autor;
+        private DataGridViewTextBoxColumn Cell_Categorie;
+        private DataGridViewTextBoxColumn Cell_ISBN;
+        private DataGridViewTextBoxColumn Cell_Editorial;
+        private DataGridViewTextBoxColumn Cell_Year;
+        private DataGridViewTextBoxColumn Cell_Stock;
+        private DataGridViewTextBoxColumn Cell_State;
+        private DataGridViewTextBoxColumn Cell_Pages;
     }
 }

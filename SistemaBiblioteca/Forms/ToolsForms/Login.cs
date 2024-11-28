@@ -4,21 +4,20 @@ namespace SistemaBiblioteca.Forms
 {
     public partial class Login : Form
     {
+        List<Administrator> administrators;
         public Login()
         {
             InitializeComponent();
+            administrators = new List<Administrator>();
         }
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {
-            Administrator administrator = new Administrator("Admin", "123");
 
             if (ValidateFields())
             {
-                ValidateCredentials(administrator);
+                ValidateCredentials();
             }
-
-            
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -56,29 +55,89 @@ namespace SistemaBiblioteca.Forms
             return isValid;
         }
 
-        private void ValidateCredentials(Administrator administrator)
+        private void ValidateCredentials()
         {
             string username=TxtUserName.Text;
             string password=TxtPassword.Text;
-            if (username == administrator.Username && password==administrator.Password)
+
+            administrators = LoadChanges();
+
+            foreach (var admin in administrators)
             {
-                this.Hide();
-                MainForm mainForm = new MainForm();
-                mainForm.FormClosed += (s, args) => this.Close();
-                mainForm.Show();
+                if (username == admin.Username && password == admin.Password)
+                {
+                    this.Hide();
+                    MainForm mainForm = new MainForm();
+                    mainForm.FormClosed += (s, args) => this.Close();
+                    mainForm.Show();
+                }
+                else if (username == admin.Username && password != admin.Password)
+                {
+                    LblErrorPassword.Visible = false;
+                    LblErrorPassword.Text = "La contraseña es incorrecta";
+                    LblErrorPassword.Visible = true;
+                }
+                else if (username != admin.Username)
+                {
+                    LblErrorUserName.Visible = false;
+                    LblErrorUserName.Text = "El username no existe";
+                    LblErrorUserName.Visible = true;
+                }
             }
-            else if(username == administrator.Username && password != administrator.Password)
+        }
+
+        public List<Administrator> LoadChanges()
+        {
+            string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            string filePath = Path.Combine(folderPath, "ListaAdministradores.txt");
+
+            if (administrators != null)
             {
-                LblErrorPassword.Visible=false;
-                LblErrorPassword.Text = "La contraseña es incorrecta";
-                LblErrorPassword.Visible = true;
-            }else if(username != administrator.Username)
-            {
-                LblErrorUserName.Visible=false;
-                LblErrorUserName.Text = "El username no existe";
-                LblErrorUserName.Visible = true;
+                administrators.Clear();
             }
-            
+
+            if (!File.Exists(filePath))
+            {
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(filePath)) { };
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar los administradores: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        string[] datos = line.Split(',');
+
+                        if (datos.Length == 2)
+                        {
+                            string username = datos[0];
+                            string password = datos[1];
+
+                            administrators.Add(new Administrator(username, password));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los administradores: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return administrators;
         }
     }
 }

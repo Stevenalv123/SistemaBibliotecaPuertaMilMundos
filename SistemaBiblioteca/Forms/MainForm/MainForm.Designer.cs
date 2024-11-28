@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             LateralPanel = new Panel();
-            BtnReports = new FontAwesome.Sharp.IconButton();
+            BtnAdmins = new FontAwesome.Sharp.IconButton();
             BtnBooks = new FontAwesome.Sharp.IconButton();
             BtnUsers = new FontAwesome.Sharp.IconButton();
             BtnDevolutions = new FontAwesome.Sharp.IconButton();
@@ -46,7 +46,7 @@
             // 
             LateralPanel.BackColor = Color.White;
             LateralPanel.BorderStyle = BorderStyle.FixedSingle;
-            LateralPanel.Controls.Add(BtnReports);
+            LateralPanel.Controls.Add(BtnAdmins);
             LateralPanel.Controls.Add(BtnBooks);
             LateralPanel.Controls.Add(BtnUsers);
             LateralPanel.Controls.Add(BtnDevolutions);
@@ -57,25 +57,26 @@
             LateralPanel.Size = new Size(358, 630);
             LateralPanel.TabIndex = 0;
             // 
-            // BtnReports
+            // BtnAdmins
             // 
-            BtnReports.BackColor = Color.White;
-            BtnReports.Cursor = Cursors.Hand;
-            BtnReports.Dock = DockStyle.Top;
-            BtnReports.FlatAppearance.BorderSize = 0;
-            BtnReports.FlatStyle = FlatStyle.Popup;
-            BtnReports.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnReports.IconChar = FontAwesome.Sharp.IconChar.Receipt;
-            BtnReports.IconColor = Color.Black;
-            BtnReports.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            BtnReports.IconSize = 60;
-            BtnReports.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnReports.Location = new Point(0, 470);
-            BtnReports.Name = "BtnReports";
-            BtnReports.Size = new Size(356, 73);
-            BtnReports.TabIndex = 4;
-            BtnReports.Text = "Reportes";
-            BtnReports.UseVisualStyleBackColor = false;
+            BtnAdmins.BackColor = Color.White;
+            BtnAdmins.Cursor = Cursors.Hand;
+            BtnAdmins.Dock = DockStyle.Top;
+            BtnAdmins.FlatAppearance.BorderSize = 0;
+            BtnAdmins.FlatStyle = FlatStyle.Popup;
+            BtnAdmins.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnAdmins.IconChar = FontAwesome.Sharp.IconChar.Users;
+            BtnAdmins.IconColor = Color.Black;
+            BtnAdmins.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            BtnAdmins.IconSize = 60;
+            BtnAdmins.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnAdmins.Location = new Point(0, 470);
+            BtnAdmins.Name = "BtnAdmins";
+            BtnAdmins.Size = new Size(356, 73);
+            BtnAdmins.TabIndex = 4;
+            BtnAdmins.Text = "Administradores";
+            BtnAdmins.UseVisualStyleBackColor = false;
+            BtnAdmins.Click += BtnAdmins_Click;
             // 
             // BtnBooks
             // 
@@ -199,6 +200,6 @@
         private FontAwesome.Sharp.IconButton BtnBooks;
         private FontAwesome.Sharp.IconButton BtnDevolutions;
         private FontAwesome.Sharp.IconButton BtnUsers;
-        private FontAwesome.Sharp.IconButton BtnReports;
+        private FontAwesome.Sharp.IconButton BtnAdmins;
     }
 }

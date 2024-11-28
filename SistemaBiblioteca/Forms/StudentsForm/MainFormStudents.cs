@@ -267,17 +267,14 @@ namespace SistemaBiblioteca.Forms
             {
                 string carnetToEdit = DtvStudents.SelectedRows[0].Cells[0].Value.ToString();
 
-                // Buscar el estudiante en la lista por el Carnet
                 Student studentToEdit = students.FirstOrDefault(s => s.Carnet == carnetToEdit);
 
                 if (studentToEdit != null)
                 {
-                    // Pasar el objeto Student encontrado al formulario de agregar/editar
                     AddStudents addStudents = new AddStudents(students, studentToEdit);
 
                     if (addStudents.ShowDialog() == DialogResult.OK)
                     {
-                        // Actualizar la lista de estudiantes después de la edición
                         UpdateStudentsList(students);
                         filteredstudents = new List<Student>(students);
                         SaveStudents();

@@ -4,7 +4,6 @@ namespace SistemaBiblioteca
 {
     public partial class MainForm:Form
     {
-        // Open the form of users
         private async void ShowUsers(object sender, EventArgs e)
         {
             if (IsFormOpen(typeof(MainFormStudents))) return;
@@ -13,7 +12,6 @@ namespace SistemaBiblioteca
             OpenForm(new MainFormStudents());
         }
 
-        // Open the form of books
         private async void ShowBooks(object sender, EventArgs e)
         {
             if (IsFormOpen(typeof(MainFormBooks))) return;
@@ -30,7 +28,6 @@ namespace SistemaBiblioteca
             OpenForm(new DevolutionForm());
         }
 
-        // Shows a dialog to confirm the exit of the program
         private void Exit(object sender, FormClosingEventArgs e)
         {
             ExitForm exit = new ExitForm();

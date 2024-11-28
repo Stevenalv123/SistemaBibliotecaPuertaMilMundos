@@ -51,8 +51,9 @@ namespace SistemaBiblioteca.Forms.Books
                 SaveEditorials(editorials);
 
                 CmbEditorial.DataSource = null;
-                CmbEditorial.DataSource = editorials;
+                CmbEditorial.DataSource = editorials.ToList();
                 CmbEditorial.DisplayMember = "Name";
+                CmbCategories.ValueMember = "Name";
             }
         }
 

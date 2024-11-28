@@ -14,17 +14,6 @@ namespace SistemaBiblioteca
             login.Close();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            ShowDevolutions(sender, e);
-        }
-
-        private async void BtnAdmins_Click(object sender, EventArgs e)
-        {
-            if (IsFormOpen(typeof(AdminstratorsForms))) return;
-            OpenForm(new LoadingForm());
-            await Task.Run(() => ShowLoading());
-            OpenForm(new AdminstratorsForms());
-        }
+        
     }
 }

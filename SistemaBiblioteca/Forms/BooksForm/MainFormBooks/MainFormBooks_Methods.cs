@@ -86,7 +86,7 @@ namespace SistemaBiblioteca.Forms
                         }
                     }
                 }
-                ShowBooksOnDataGridView();  // Actualizar el FlowLayoutPanel con los libros cargados
+                ShowBooksOnDataGridView(); 
             }
             else
             {

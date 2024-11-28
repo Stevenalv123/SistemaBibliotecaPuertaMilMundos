@@ -129,13 +129,12 @@ namespace SistemaBiblioteca.Forms.Books
                     {
                         string[] datos = line.Split(',');
 
-                        if (datos.Length == 5)
+                        if (datos.Length == 4)
                         {
-                            string idEditorial = datos[0].Trim();
-                            string name = datos[1].Trim();
-                            string adress = datos[2].Trim();
-                            string phone = datos[3].Trim();
-                            string email = datos[4].Trim();
+                            string name = datos[0].Trim();
+                            string adress = datos[1].Trim();
+                            string phone = datos[2].Trim();
+                            string email = datos[3].Trim();
 
                             editorials.Add(new Editorial(name, adress, phone, email){});
 
@@ -176,7 +175,5 @@ namespace SistemaBiblioteca.Forms.Books
                 MessageBox.Show($"Error al guardar las editoriales: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
     }
 }

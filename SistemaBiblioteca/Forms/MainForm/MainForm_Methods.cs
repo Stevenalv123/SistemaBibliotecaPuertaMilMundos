@@ -6,7 +6,6 @@ namespace SistemaBiblioteca
     public partial class MainForm : Form
     {
         private Form ActiveForm;
-        // Open the form and close the current one
         private void OpenForm(Form ChildForm)
         {
             if (ActiveForm != null) ActiveForm.Close();
@@ -20,13 +19,11 @@ namespace SistemaBiblioteca
             ChildForm.Show();
         }
 
-        //Show a loading screen
         private void ShowLoading()
         {
             Thread.Sleep(2000);
         }
 
-        //Check if the form is already open
         private bool IsFormOpen(Type formType)
         {
             foreach (Form form in Application.OpenForms)

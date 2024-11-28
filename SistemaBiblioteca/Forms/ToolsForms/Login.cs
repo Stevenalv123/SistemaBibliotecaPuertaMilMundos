@@ -105,7 +105,10 @@ namespace SistemaBiblioteca.Forms
 
                 try
                 {
-                    using (StreamWriter writer = new StreamWriter(filePath)) { };
+                    using (StreamWriter writer = new StreamWriter(filePath)) 
+                    {
+                        writer.WriteLine($"Admin,123");
+                    };
                 }
                 catch (Exception ex)
                 {

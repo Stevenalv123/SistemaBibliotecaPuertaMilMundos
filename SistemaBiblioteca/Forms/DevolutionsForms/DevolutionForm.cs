@@ -391,7 +391,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
 
                     pdfDoc.Add(infoTable);
 
-                    Paragraph footer = new Paragraph("Firma del Encargado\n\n_________________________", FontFactory.GetFont(FontFactory.HELVETICA, 10));
+                    Paragraph footer = new Paragraph("Firma del Encargado\n\n__________________", FontFactory.GetFont(FontFactory.HELVETICA, 8));
                     footer.Alignment = Element.ALIGN_CENTER;
                     pdfDoc.Add(footer);
 

@@ -2,8 +2,6 @@
 using iTextSharp.text;
 using SistemaBiblioteca.Entities;
 using SistemaBiblioteca.Forms.StudentsForm;
-using System.Windows.Forms;
-using SistemaBiblioteca.Forms.BooksForm;
 
 namespace SistemaBiblioteca.Forms
 {
@@ -289,6 +287,26 @@ namespace SistemaBiblioteca.Forms
                 {
                     MessageBox.Show("Estudiante no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void MainFormStudents_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.B)
+            {
+                TxtSearch.Focus();
+            }
+            if (e.Control && e.KeyCode == Keys.N)
+            {
+                BtnAddStudent_Click(sender, e);
+            }
+            if (e.Control && e.KeyCode == Keys.E)
+            {
+                BtnEdit_Click(sender, e);
+            }
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                BtnDelete_Click(sender, e);
             }
         }
     }

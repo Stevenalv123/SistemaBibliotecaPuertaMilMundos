@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevolutionForm));
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             panel2 = new Panel();
-            tabControl1 = new TabControl();
+            TbDevolutions = new TabControl();
             tabPage1 = new TabPage();
             panel3 = new Panel();
             DtvLoans = new DataGridView();
@@ -42,14 +45,12 @@
             Cell_Book = new DataGridViewTextBoxColumn();
             Cell_LoanDate = new DataGridViewTextBoxColumn();
             Cell_LoanDevolutiondate = new DataGridViewTextBoxColumn();
+            Cell_Observations = new DataGridViewTextBoxColumn();
+            Cell_State = new DataGridViewTextBoxColumn();
+            Cell_Fine = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             ToolBoxUsers = new ToolStrip();
-            BtnAddBook = new ToolStripButton();
-            toolStripSeparator3 = new ToolStripSeparator();
-            BtnEdit = new ToolStripButton();
-            toolStripSeparator1 = new ToolStripSeparator();
-            BtnDelete = new ToolStripButton();
-            toolStripSeparator2 = new ToolStripSeparator();
+            BtnNewRegister = new ToolStripButton();
             BtnPrint = new ToolStripButton();
             TopPanel = new Panel();
             label2 = new Label();
@@ -58,23 +59,25 @@
             TxtSearch = new TextBox();
             UsernamePanel = new Panel();
             tabPage2 = new TabPage();
+            panel8 = new Panel();
+            DtvDevoluciones = new DataGridView();
+            Cell_Code = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
             panel7 = new Panel();
             toolStrip1 = new ToolStrip();
-            toolStripButton1 = new ToolStripButton();
-            toolStripSeparator4 = new ToolStripSeparator();
-            toolStripButton2 = new ToolStripButton();
-            toolStripSeparator5 = new ToolStripSeparator();
-            toolStripButton3 = new ToolStripButton();
-            toolStripSeparator6 = new ToolStripSeparator();
             toolStripButton4 = new ToolStripButton();
-            panel4 = new Panel();
-            LblUsers = new Label();
+            panel6 = new Panel();
+            label1 = new Label();
             panel5 = new Panel();
             pictureBox2 = new PictureBox();
             textBox1 = new TextBox();
-            panel6 = new Panel();
+            panel4 = new Panel();
             panel2.SuspendLayout();
-            tabControl1.SuspendLayout();
+            TbDevolutions.SuspendLayout();
             tabPage1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DtvLoans).BeginInit();
@@ -84,34 +87,35 @@
             SearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabPage2.SuspendLayout();
+            panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DtvDevoluciones).BeginInit();
             panel7.SuspendLayout();
             toolStrip1.SuspendLayout();
-            panel4.SuspendLayout();
+            panel6.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel2
             // 
-            panel2.Controls.Add(tabControl1);
+            panel2.Controls.Add(TbDevolutions);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(931, 630);
             panel2.TabIndex = 1;
             // 
-            // tabControl1
+            // TbDevolutions
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Font = new Font("Cambria", 14F, FontStyle.Bold);
-            tabControl1.Location = new Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(931, 630);
-            tabControl1.TabIndex = 1;
+            TbDevolutions.Controls.Add(tabPage1);
+            TbDevolutions.Controls.Add(tabPage2);
+            TbDevolutions.Dock = DockStyle.Fill;
+            TbDevolutions.Font = new Font("Cambria", 14F, FontStyle.Bold);
+            TbDevolutions.Location = new Point(0, 0);
+            TbDevolutions.Name = "TbDevolutions";
+            TbDevolutions.SelectedIndex = 0;
+            TbDevolutions.Size = new Size(931, 630);
+            TbDevolutions.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -140,35 +144,35 @@
             // 
             DtvLoans.AllowUserToAddRows = false;
             DtvLoans.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ActiveBorder;
-            DtvLoans.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.ActiveBorder;
+            DtvLoans.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             DtvLoans.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DtvLoans.BackgroundColor = Color.White;
             DtvLoans.BorderStyle = BorderStyle.None;
             DtvLoans.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.NullValue = "-";
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DtvLoans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.NullValue = "-";
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            DtvLoans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             DtvLoans.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DtvLoans.Columns.AddRange(new DataGridViewColumn[] { Cell_Codigo, Cell_Student, Cell_Book, Cell_LoanDate, Cell_LoanDevolutiondate });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle3.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.WindowFrame;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            DtvLoans.DefaultCellStyle = dataGridViewCellStyle3;
+            DtvLoans.Columns.AddRange(new DataGridViewColumn[] { Cell_Codigo, Cell_Student, Cell_Book, Cell_LoanDate, Cell_LoanDevolutiondate, Cell_Observations, Cell_State, Cell_Fine });
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle9.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.WindowFrame;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            DtvLoans.DefaultCellStyle = dataGridViewCellStyle9;
             DtvLoans.Dock = DockStyle.Fill;
             DtvLoans.Location = new Point(0, 0);
             DtvLoans.MultiSelect = false;
@@ -178,6 +182,7 @@
             DtvLoans.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DtvLoans.Size = new Size(917, 473);
             DtvLoans.TabIndex = 5;
+            DtvLoans.CellClick += DtvLoans_CellClick;
             // 
             // Cell_Codigo
             // 
@@ -209,6 +214,24 @@
             Cell_LoanDevolutiondate.Name = "Cell_LoanDevolutiondate";
             Cell_LoanDevolutiondate.ReadOnly = true;
             // 
+            // Cell_Observations
+            // 
+            Cell_Observations.HeaderText = "Observaciones";
+            Cell_Observations.Name = "Cell_Observations";
+            Cell_Observations.ReadOnly = true;
+            // 
+            // Cell_State
+            // 
+            Cell_State.HeaderText = "Estado";
+            Cell_State.Name = "Cell_State";
+            Cell_State.ReadOnly = true;
+            // 
+            // Cell_Fine
+            // 
+            Cell_Fine.HeaderText = "Valor de multa";
+            Cell_Fine.Name = "Cell_Fine";
+            Cell_Fine.ReadOnly = true;
+            // 
             // panel1
             // 
             panel1.Controls.Add(ToolBoxUsers);
@@ -222,60 +245,26 @@
             // 
             ToolBoxUsers.Dock = DockStyle.Fill;
             ToolBoxUsers.ImageScalingSize = new Size(20, 20);
-            ToolBoxUsers.Items.AddRange(new ToolStripItem[] { BtnAddBook, toolStripSeparator3, BtnEdit, toolStripSeparator1, BtnDelete, toolStripSeparator2, BtnPrint });
+            ToolBoxUsers.Items.AddRange(new ToolStripItem[] { BtnNewRegister, BtnPrint });
             ToolBoxUsers.Location = new Point(0, 0);
             ToolBoxUsers.Name = "ToolBoxUsers";
             ToolBoxUsers.Size = new Size(917, 46);
             ToolBoxUsers.TabIndex = 1;
             ToolBoxUsers.Text = "toolStrip1";
             // 
-            // BtnAddBook
+            // BtnNewRegister
             // 
-            BtnAddBook.Font = new Font("Cambria", 11F, FontStyle.Bold);
-            BtnAddBook.Image = (Image)resources.GetObject("BtnAddBook.Image");
-            BtnAddBook.ImageTransparentColor = Color.Magenta;
-            BtnAddBook.Name = "BtnAddBook";
-            BtnAddBook.Size = new Size(88, 43);
-            BtnAddBook.Text = "Agregar";
-            BtnAddBook.Click += BtnAddBook_Click;
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 46);
-            // 
-            // BtnEdit
-            // 
-            BtnEdit.Enabled = false;
-            BtnEdit.Font = new Font("Cambria", 11F, FontStyle.Bold);
-            BtnEdit.Image = (Image)resources.GetObject("BtnEdit.Image");
-            BtnEdit.ImageTransparentColor = Color.Magenta;
-            BtnEdit.Name = "BtnEdit";
-            BtnEdit.Size = new Size(75, 43);
-            BtnEdit.Text = "Editar";
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 46);
-            // 
-            // BtnDelete
-            // 
-            BtnDelete.Enabled = false;
-            BtnDelete.Font = new Font("Cambria", 11F, FontStyle.Bold);
-            BtnDelete.Image = (Image)resources.GetObject("BtnDelete.Image");
-            BtnDelete.ImageTransparentColor = Color.Magenta;
-            BtnDelete.Name = "BtnDelete";
-            BtnDelete.Size = new Size(93, 43);
-            BtnDelete.Text = "Eliminar";
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 46);
+            BtnNewRegister.Font = new Font("Cambria", 11F, FontStyle.Bold);
+            BtnNewRegister.Image = (Image)resources.GetObject("BtnNewRegister.Image");
+            BtnNewRegister.ImageTransparentColor = Color.Magenta;
+            BtnNewRegister.Name = "BtnNewRegister";
+            BtnNewRegister.Size = new Size(76, 43);
+            BtnNewRegister.Text = "Nuevo";
+            BtnNewRegister.Click += BtnAddBook_Click;
             // 
             // BtnPrint
             // 
+            BtnPrint.Alignment = ToolStripItemAlignment.Right;
             BtnPrint.Font = new Font("Cambria", 11F, FontStyle.Bold);
             BtnPrint.Image = (Image)resources.GetObject("BtnPrint.Image");
             BtnPrint.ImageTransparentColor = Color.Magenta;
@@ -350,117 +339,162 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(panel8);
             tabPage2.Controls.Add(panel7);
-            tabPage2.Controls.Add(panel4);
-            tabPage2.Location = new Point(4, 24);
+            tabPage2.Controls.Add(panel6);
+            tabPage2.Location = new Point(4, 31);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(923, 602);
+            tabPage2.Size = new Size(923, 595);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Devoluciones";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            panel8.Controls.Add(DtvDevoluciones);
+            panel8.Dock = DockStyle.Fill;
+            panel8.Location = new Point(3, 120);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(917, 472);
+            panel8.TabIndex = 11;
+            // 
+            // DtvDevoluciones
+            // 
+            DtvDevoluciones.AllowUserToAddRows = false;
+            DtvDevoluciones.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = Color.White;
+            dataGridViewCellStyle10.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.ActiveBorder;
+            DtvDevoluciones.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            DtvDevoluciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DtvDevoluciones.BackgroundColor = Color.White;
+            DtvDevoluciones.BorderStyle = BorderStyle.None;
+            DtvDevoluciones.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = Color.White;
+            dataGridViewCellStyle11.Font = new Font("Cambria", 14F, FontStyle.Bold);
+            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle11.NullValue = "-";
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            DtvDevoluciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            DtvDevoluciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DtvDevoluciones.Columns.AddRange(new DataGridViewColumn[] { Cell_Code, Column2, Column1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, Column3 });
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle12.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.WindowFrame;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            DtvDevoluciones.DefaultCellStyle = dataGridViewCellStyle12;
+            DtvDevoluciones.Dock = DockStyle.Fill;
+            DtvDevoluciones.Location = new Point(0, 0);
+            DtvDevoluciones.MultiSelect = false;
+            DtvDevoluciones.Name = "DtvDevoluciones";
+            DtvDevoluciones.ReadOnly = true;
+            DtvDevoluciones.RowHeadersVisible = false;
+            DtvDevoluciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DtvDevoluciones.Size = new Size(917, 472);
+            DtvDevoluciones.TabIndex = 6;
+            // 
+            // Cell_Code
+            // 
+            Cell_Code.HeaderText = "Codigo de Prestamo";
+            Cell_Code.Name = "Cell_Code";
+            Cell_Code.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Libro";
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Estudiante";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Fecha de devolucion";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "Estado";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Multa";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
             // 
             // panel7
             // 
             panel7.Controls.Add(toolStrip1);
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(3, 73);
-            panel7.Margin = new Padding(3, 2, 3, 2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(917, 50);
+            panel7.Size = new Size(917, 47);
             panel7.TabIndex = 10;
             // 
             // toolStrip1
             // 
             toolStrip1.Dock = DockStyle.Fill;
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator4, toolStripButton2, toolStripSeparator5, toolStripButton3, toolStripSeparator6, toolStripButton4 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton4 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(917, 50);
+            toolStrip1.Size = new Size(917, 47);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
-            // 
-            toolStripButton1.Font = new Font("Cambria", 11F, FontStyle.Bold);
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(88, 47);
-            toolStripButton1.Text = "Agregar";
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 50);
-            // 
-            // toolStripButton2
-            // 
-            toolStripButton2.Enabled = false;
-            toolStripButton2.Font = new Font("Cambria", 11F, FontStyle.Bold);
-            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(75, 47);
-            toolStripButton2.Text = "Editar";
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 50);
-            // 
-            // toolStripButton3
-            // 
-            toolStripButton3.Enabled = false;
-            toolStripButton3.Font = new Font("Cambria", 11F, FontStyle.Bold);
-            toolStripButton3.Image = (Image)resources.GetObject("toolStripButton3.Image");
-            toolStripButton3.ImageTransparentColor = Color.Magenta;
-            toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(93, 47);
-            toolStripButton3.Text = "Eliminar";
-            // 
-            // toolStripSeparator6
-            // 
-            toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(6, 50);
-            // 
             // toolStripButton4
             // 
+            toolStripButton4.Alignment = ToolStripItemAlignment.Right;
             toolStripButton4.Font = new Font("Cambria", 11F, FontStyle.Bold);
             toolStripButton4.Image = (Image)resources.GetObject("toolStripButton4.Image");
             toolStripButton4.ImageTransparentColor = Color.Magenta;
             toolStripButton4.Name = "toolStripButton4";
-            toolStripButton4.Size = new Size(96, 47);
+            toolStripButton4.Size = new Size(96, 44);
             toolStripButton4.Text = "Imprimir";
             // 
-            // panel4
+            // panel6
             // 
-            panel4.BackColor = Color.FromArgb(40, 68, 131);
-            panel4.Controls.Add(LblUsers);
-            panel4.Controls.Add(panel5);
-            panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(3, 3);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(917, 70);
-            panel4.TabIndex = 9;
+            panel6.BackColor = Color.FromArgb(40, 68, 131);
+            panel6.Controls.Add(label1);
+            panel6.Controls.Add(panel5);
+            panel6.Dock = DockStyle.Top;
+            panel6.Location = new Point(3, 3);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(917, 70);
+            panel6.TabIndex = 9;
             // 
-            // LblUsers
+            // label1
             // 
-            LblUsers.AutoSize = true;
-            LblUsers.Font = new Font("Cambria", 24F, FontStyle.Bold);
-            LblUsers.ForeColor = Color.White;
-            LblUsers.Location = new Point(5, 17);
-            LblUsers.Name = "LblUsers";
-            LblUsers.Size = new Size(213, 37);
-            LblUsers.TabIndex = 14;
-            LblUsers.Text = "Devoluciones";
+            label1.AutoSize = true;
+            label1.Font = new Font("Cambria", 24F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(5, 13);
+            label1.Name = "label1";
+            label1.Size = new Size(213, 37);
+            label1.TabIndex = 4;
+            label1.Text = "Devoluciones";
             // 
             // panel5
             // 
             panel5.Controls.Add(pictureBox2);
             panel5.Controls.Add(textBox1);
-            panel5.Controls.Add(panel6);
+            panel5.Controls.Add(panel4);
             panel5.Dock = DockStyle.Right;
             panel5.Location = new Point(461, 0);
             panel5.Name = "panel5";
@@ -491,13 +525,13 @@
             textBox1.Size = new Size(332, 32);
             textBox1.TabIndex = 11;
             // 
-            // panel6
+            // panel4
             // 
-            panel6.BackColor = Color.White;
-            panel6.Location = new Point(111, 50);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(332, 1);
-            panel6.TabIndex = 12;
+            panel4.BackColor = Color.White;
+            panel4.Location = new Point(111, 50);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(332, 1);
+            panel4.TabIndex = 12;
             // 
             // DevolutionForm
             // 
@@ -509,7 +543,7 @@
             Text = "DevolutionForm";
             Load += DevolutionForm_Load;
             panel2.ResumeLayout(false);
-            tabControl1.ResumeLayout(false);
+            TbDevolutions.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DtvLoans).EndInit();
@@ -523,12 +557,14 @@
             SearchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabPage2.ResumeLayout(false);
+            panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DtvDevoluciones).EndInit();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -537,39 +573,18 @@
 
         #endregion
         private Panel panel2;
-        private TabControl tabControl1;
+        private TabControl TbDevolutions;
         private TabPage tabPage1;
         private Panel panel1;
         private ToolStrip ToolBoxUsers;
-        private ToolStripButton BtnAddBook;
-        private ToolStripSeparator toolStripSeparator3;
-        private ToolStripButton BtnEdit;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripButton BtnDelete;
-        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripButton BtnNewRegister;
         private ToolStripButton BtnPrint;
         private Panel TopPanel;
         private Panel SearchPanel;
         private PictureBox pictureBox1;
         private TextBox TxtSearch;
         private Panel UsernamePanel;
-        private TabPage tabPage2;
-        private Panel panel7;
-        private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton1;
-        private ToolStripSeparator toolStripSeparator4;
-        private ToolStripButton toolStripButton2;
-        private ToolStripSeparator toolStripSeparator5;
-        private ToolStripButton toolStripButton3;
-        private ToolStripSeparator toolStripSeparator6;
-        private ToolStripButton toolStripButton4;
-        private Panel panel4;
-        private Panel panel5;
-        private PictureBox pictureBox2;
-        private TextBox textBox1;
-        private Panel panel6;
         private Label label2;
-        private Label LblUsers;
         private Panel panel3;
         private DataGridView DtvLoans;
         private DataGridViewTextBoxColumn Cell_Codigo;
@@ -577,5 +592,26 @@
         private DataGridViewTextBoxColumn Cell_Book;
         private DataGridViewTextBoxColumn Cell_LoanDate;
         private DataGridViewTextBoxColumn Cell_LoanDevolutiondate;
+        private DataGridViewTextBoxColumn Cell_Observations;
+        private DataGridViewTextBoxColumn Cell_State;
+        private DataGridViewTextBoxColumn Cell_Fine;
+        private TabPage tabPage2;
+        private Panel panel7;
+        private Panel panel6;
+        private Label label1;
+        private Panel panel5;
+        private PictureBox pictureBox2;
+        private TextBox textBox1;
+        private Panel panel4;
+        private Panel panel8;
+        private DataGridView DtvDevoluciones;
+        private ToolStrip toolStrip1;
+        private ToolStripButton toolStripButton4;
+        private DataGridViewTextBoxColumn Cell_Code;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn Column3;
     }
 }

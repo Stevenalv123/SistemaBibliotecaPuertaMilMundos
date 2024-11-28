@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBooks));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -50,16 +49,12 @@
             BtnAddCategorie = new FontAwesome.Sharp.IconButton();
             label8 = new Label();
             TxtAuthors = new TextBox();
-            label9 = new Label();
-            PcbCover = new PictureBox();
             label10 = new Label();
             NudPages = new NumericUpDown();
             label11 = new Label();
             NudStock = new NumericUpDown();
-            label12 = new Label();
             ((System.ComponentModel.ISupportInitialize)CmbEditorial).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CmbCategories).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PcbCover).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NudPages).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NudStock).BeginInit();
             SuspendLayout();
@@ -68,7 +63,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cambria", 18F, FontStyle.Bold);
-            label1.Location = new Point(453, 12);
+            label1.Location = new Point(157, 17);
             label1.Name = "label1";
             label1.Size = new Size(91, 28);
             label1.TabIndex = 0;
@@ -78,7 +73,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Cambria", 18F, FontStyle.Bold);
-            label2.Location = new Point(457, 60);
+            label2.Location = new Point(161, 65);
             label2.Name = "label2";
             label2.Size = new Size(87, 28);
             label2.TabIndex = 1;
@@ -88,7 +83,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Cambria", 18F, FontStyle.Bold);
-            label3.Location = new Point(468, 162);
+            label3.Location = new Point(172, 167);
             label3.Name = "label3";
             label3.Size = new Size(76, 28);
             label3.TabIndex = 2;
@@ -98,7 +93,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Cambria", 18F, FontStyle.Bold);
-            label4.Location = new Point(422, 212);
+            label4.Location = new Point(126, 217);
             label4.Name = "label4";
             label4.Size = new Size(122, 28);
             label4.TabIndex = 3;
@@ -108,7 +103,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Cambria", 18F, FontStyle.Bold);
-            label5.Location = new Point(311, 262);
+            label5.Location = new Point(15, 267);
             label5.Name = "label5";
             label5.Size = new Size(233, 28);
             label5.TabIndex = 4;
@@ -118,7 +113,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Cambria", 18F, FontStyle.Bold);
-            label6.Location = new Point(385, 311);
+            label6.Location = new Point(89, 316);
             label6.Name = "label6";
             label6.Size = new Size(159, 28);
             label6.TabIndex = 5;
@@ -128,7 +123,7 @@
             // 
             TxtTitle.BackColor = Color.White;
             TxtTitle.Font = new Font("Cambria", 15.75F);
-            TxtTitle.Location = new Point(550, 12);
+            TxtTitle.Location = new Point(254, 17);
             TxtTitle.Name = "TxtTitle";
             TxtTitle.Size = new Size(450, 32);
             TxtTitle.TabIndex = 6;
@@ -140,7 +135,7 @@
             MtbISBN.BeepOnError = true;
             MtbISBN.Font = new Font("Cambria", 15.75F);
             MtbISBN.HidePromptOnLeave = true;
-            MtbISBN.Location = new Point(550, 158);
+            MtbISBN.Location = new Point(254, 163);
             MtbISBN.Mask = "000-0-00-000000-0";
             MtbISBN.Name = "MtbISBN";
             MtbISBN.PromptChar = ' ';
@@ -158,7 +153,7 @@
             BtnCancel.FlatStyle = FlatStyle.Flat;
             BtnCancel.Font = new Font("Cambria", 10F, FontStyle.Bold);
             BtnCancel.ForeColor = Color.White;
-            BtnCancel.Location = new Point(721, 417);
+            BtnCancel.Location = new Point(425, 422);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(133, 40);
             BtnCancel.TabIndex = 12;
@@ -175,7 +170,7 @@
             BtnSave.FlatStyle = FlatStyle.Flat;
             BtnSave.Font = new Font("Cambria", 10F, FontStyle.Bold);
             BtnSave.ForeColor = Color.White;
-            BtnSave.Location = new Point(871, 417);
+            BtnSave.Location = new Point(575, 422);
             BtnSave.Name = "BtnSave";
             BtnSave.Size = new Size(133, 40);
             BtnSave.TabIndex = 13;
@@ -187,7 +182,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Cambria", 18F);
-            label7.Location = new Point(700, 307);
+            label7.Location = new Point(404, 312);
             label7.Name = "label7";
             label7.Size = new Size(108, 28);
             label7.TabIndex = 14;
@@ -203,7 +198,7 @@
             BtnLookAuthor.IconFont = FontAwesome.Sharp.IconFont.Solid;
             BtnLookAuthor.IconSize = 26;
             BtnLookAuthor.ImageAlign = ContentAlignment.TopLeft;
-            BtnLookAuthor.Location = new Point(867, 60);
+            BtnLookAuthor.Location = new Point(571, 65);
             BtnLookAuthor.Name = "BtnLookAuthor";
             BtnLookAuthor.Size = new Size(133, 32);
             BtnLookAuthor.TabIndex = 15;
@@ -222,7 +217,7 @@
             BtnAddEditorial.IconFont = FontAwesome.Sharp.IconFont.Solid;
             BtnAddEditorial.IconSize = 26;
             BtnAddEditorial.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAddEditorial.Location = new Point(871, 210);
+            BtnAddEditorial.Location = new Point(575, 215);
             BtnAddEditorial.Name = "BtnAddEditorial";
             BtnAddEditorial.Size = new Size(129, 32);
             BtnAddEditorial.TabIndex = 17;
@@ -237,7 +232,7 @@
             MtbPublicationYear.BeepOnError = true;
             MtbPublicationYear.Font = new Font("Cambria", 15.75F);
             MtbPublicationYear.HidePromptOnLeave = true;
-            MtbPublicationYear.Location = new Point(550, 256);
+            MtbPublicationYear.Location = new Point(254, 261);
             MtbPublicationYear.Mask = "0000";
             MtbPublicationYear.Name = "MtbPublicationYear";
             MtbPublicationYear.PromptChar = ' ';
@@ -253,7 +248,7 @@
             CmbEditorial.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
             CmbEditorial.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             CmbEditorial.Font = new Font("Cambria", 12F);
-            CmbEditorial.Location = new Point(550, 210);
+            CmbEditorial.Location = new Point(254, 215);
             CmbEditorial.Name = "CmbEditorial";
             CmbEditorial.Size = new Size(305, 32);
             CmbEditorial.Style.EditorStyle.BackColor = Color.White;
@@ -270,7 +265,7 @@
             // 
             LblIconFormat.AutoSize = true;
             LblIconFormat.Font = new Font("Cambria", 12F, FontStyle.Bold);
-            LblIconFormat.Location = new Point(750, 166);
+            LblIconFormat.Location = new Point(454, 171);
             LblIconFormat.Name = "LblIconFormat";
             LblIconFormat.Size = new Size(0, 19);
             LblIconFormat.TabIndex = 21;
@@ -279,7 +274,7 @@
             // 
             LblFormatStatus.AutoSize = true;
             LblFormatStatus.Font = new Font("Cambria", 9F, FontStyle.Bold);
-            LblFormatStatus.Location = new Point(770, 170);
+            LblFormatStatus.Location = new Point(474, 175);
             LblFormatStatus.Name = "LblFormatStatus";
             LblFormatStatus.Size = new Size(0, 14);
             LblFormatStatus.TabIndex = 22;
@@ -291,7 +286,7 @@
             CmbCategories.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
             CmbCategories.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             CmbCategories.Font = new Font("Cambria", 12F);
-            CmbCategories.Location = new Point(550, 110);
+            CmbCategories.Location = new Point(254, 115);
             CmbCategories.Name = "CmbCategories";
             CmbCategories.Size = new Size(305, 32);
             CmbCategories.Style.EditorStyle.BackColor = Color.White;
@@ -314,7 +309,7 @@
             BtnAddCategorie.IconFont = FontAwesome.Sharp.IconFont.Solid;
             BtnAddCategorie.IconSize = 26;
             BtnAddCategorie.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnAddCategorie.Location = new Point(871, 110);
+            BtnAddCategorie.Location = new Point(575, 115);
             BtnAddCategorie.Name = "BtnAddCategorie";
             BtnAddCategorie.Size = new Size(129, 32);
             BtnAddCategorie.TabIndex = 24;
@@ -327,7 +322,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Cambria", 18F, FontStyle.Bold);
-            label8.Location = new Point(413, 110);
+            label8.Location = new Point(117, 115);
             label8.Name = "label8";
             label8.Size = new Size(131, 28);
             label8.TabIndex = 23;
@@ -337,38 +332,17 @@
             // 
             TxtAuthors.BackColor = Color.White;
             TxtAuthors.Font = new Font("Cambria", 15.75F);
-            TxtAuthors.Location = new Point(550, 60);
+            TxtAuthors.Location = new Point(254, 65);
             TxtAuthors.Name = "TxtAuthors";
             TxtAuthors.ReadOnly = true;
             TxtAuthors.Size = new Size(305, 32);
             TxtAuthors.TabIndex = 26;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Cambria", 18F, FontStyle.Bold);
-            label9.Location = new Point(12, 16);
-            label9.Name = "label9";
-            label9.Size = new Size(107, 28);
-            label9.TabIndex = 27;
-            label9.Text = "Portada:";
-            // 
-            // PcbCover
-            // 
-            PcbCover.Image = (Image)resources.GetObject("PcbCover.Image");
-            PcbCover.Location = new Point(12, 50);
-            PcbCover.Name = "PcbCover";
-            PcbCover.Size = new Size(291, 407);
-            PcbCover.SizeMode = PictureBoxSizeMode.Zoom;
-            PcbCover.TabIndex = 28;
-            PcbCover.TabStop = false;
-            PcbCover.Click += PcbCover_Click;
-            // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Cambria", 18F, FontStyle.Bold);
-            label10.Location = new Point(309, 361);
+            label10.Location = new Point(13, 366);
             label10.Name = "label10";
             label10.Size = new Size(235, 28);
             label10.TabIndex = 29;
@@ -377,7 +351,7 @@
             // NudPages
             // 
             NudPages.Font = new Font("Segoe UI", 16F);
-            NudPages.Location = new Point(550, 358);
+            NudPages.Location = new Point(254, 363);
             NudPages.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
             NudPages.Name = "NudPages";
             NudPages.Size = new Size(141, 36);
@@ -387,7 +361,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Cambria", 18F);
-            label11.Location = new Point(700, 361);
+            label11.Location = new Point(404, 366);
             label11.Name = "label11";
             label11.Size = new Size(92, 28);
             label11.TabIndex = 31;
@@ -396,35 +370,22 @@
             // NudStock
             // 
             NudStock.Font = new Font("Segoe UI", 16F);
-            NudStock.Location = new Point(550, 304);
+            NudStock.Location = new Point(254, 309);
             NudStock.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             NudStock.Name = "NudStock";
             NudStock.Size = new Size(141, 36);
             NudStock.TabIndex = 32;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 8F, FontStyle.Italic);
-            label12.Location = new Point(12, 460);
-            label12.Name = "label12";
-            label12.Size = new Size(251, 13);
-            label12.TabIndex = 33;
-            label12.Text = "*Haga click sobre la imagen para añadir una nueva";
             // 
             // AddBooks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1019, 478);
-            Controls.Add(label12);
+            ClientSize = new Size(720, 478);
             Controls.Add(NudStock);
             Controls.Add(label11);
             Controls.Add(NudPages);
             Controls.Add(label10);
-            Controls.Add(PcbCover);
-            Controls.Add(label9);
             Controls.Add(TxtAuthors);
             Controls.Add(CmbCategories);
             Controls.Add(BtnAddCategorie);
@@ -447,9 +408,9 @@
             Controls.Add(label2);
             Controls.Add(label1);
             MaximizeBox = false;
-            MaximumSize = new Size(1035, 517);
+            MaximumSize = new Size(736, 517);
             MinimizeBox = false;
-            MinimumSize = new Size(1035, 517);
+            MinimumSize = new Size(736, 517);
             Name = "AddBooks";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
@@ -457,7 +418,6 @@
             Load += AddBooks_Load;
             ((System.ComponentModel.ISupportInitialize)CmbEditorial).EndInit();
             ((System.ComponentModel.ISupportInitialize)CmbCategories).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PcbCover).EndInit();
             ((System.ComponentModel.ISupportInitialize)NudPages).EndInit();
             ((System.ComponentModel.ISupportInitialize)NudStock).EndInit();
             ResumeLayout(false);
@@ -487,12 +447,9 @@
         private FontAwesome.Sharp.IconButton BtnAddCategorie;
         private Label label8;
         private TextBox TxtAuthors;
-        private Label label9;
-        private PictureBox PcbCover;
         private Label label10;
         private NumericUpDown NudPages;
         private Label label11;
         private NumericUpDown NudStock;
-        private Label label12;
     }
 }

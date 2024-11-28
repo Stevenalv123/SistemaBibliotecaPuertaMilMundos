@@ -1,14 +1,5 @@
 ﻿using SistemaBiblioteca.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Forms;
 
 namespace SistemaBiblioteca.Forms.DevolutionsForms
 {
@@ -111,17 +102,16 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
 
                         if (datos.Length >= 8)
                         {
-                            // Crear un nuevo libro a partir de los datos
                             var book = new Book(
-                                datos[0], // Title
-                                datos[1], // Author
-                                new Categorie(datos[2]), // Categorie
-                                datos[3], // ISBN
-                                new Editorial(datos[3], "", "", ""), // Editorial
-                                Convert.ToInt32(datos[5]), // YearPublication
-                                Convert.ToInt32(datos[6]), // Stock
-                                (State)Enum.Parse(typeof(State), datos[7]), // BookState
-                                Convert.ToInt32(datos[8]) // Pages
+                                datos[0],
+                                datos[1], 
+                                new Categorie(datos[2]), 
+                                datos[3], 
+                                new Editorial(datos[3], "", "", ""), 
+                                Convert.ToInt32(datos[5]), 
+                                Convert.ToInt32(datos[6]),
+                                (State)Enum.Parse(typeof(State), datos[7]),
+                                Convert.ToInt32(datos[8])
                             );
 
                             books.Add(book);
@@ -151,8 +141,6 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
 
             TxtStudents.Text = string.Empty;
             TxtBooks.Text = string.Empty;
-            BtnReady.Visible = false;
-            LblSelectedBooks.Visible = false;
             AddDates();
         }
 
@@ -186,50 +174,18 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             AddDates();
         }
 
-        private void BtnLookBooks_Click(object sender, EventArgs e)
+        private void TxtBook_TextChanged(object sender, EventArgs e)
         {
-            LstBooks.Visible = true;
-            BtnReady.Visible = true;
-            TxtSearch.Visible = true;
-            BtnSearch.Visible = true;
-        }
-
-        private void BtnReady_Click(object sender, EventArgs e)
-        {
-            LstBooks.Visible = false;
-            BtnReady.Visible = false;
-            LblSelectedBooks.Visible = false;
-            TxtSearch.Visible = false;
-            BtnSearch.Visible = false;
-
-            TxtBooks.Text = string.Join(", ", selectedBooks.Select(a => a.Title));
-        }
-
-        private void LstBooks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            selectedBooks.Clear();
-            LblSelectedBooks.Visible = true;
-
-            if (LstBooks.SelectedIndices.Count > 0)
+            if (!string.IsNullOrEmpty(TxtBooks.Text))
             {
-                BtnReady.Visible = true;
-
-                foreach (int index in LstBooks.SelectedIndices)
-                {
-                    var book = (Book)LstBooks.Items[index];
-                    selectedBooks.Add(book);
-                }
-
-                LblSelectedBooks.Text = $"Autores seleccionados: {selectedBooks.Count}";
+                LstBooks.Visible = true;
             }
             else
             {
-                LblSelectedBooks.Text = "Autores seleccionados: 0";
+                LstBooks.Visible = false;
+                LstBooks.SelectedIndex = -1;
             }
-        }
 
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
-        {
             LstBooks.DataSource = SearchBook();
             LstBooks.DisplayMember = "Title";
         }
@@ -238,7 +194,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
         {
             LstBooks.SelectedIndex = -1;
             List<Book> filteredBooks = new List<Book>();
-            string search = TxtSearch.Text.Trim().ToLower();
+            string search = TxtBooks.Text.Trim().ToLower();
             filteredBooks = books.Where(a => a.Title.ToLower().Contains(search)
                               || a.ISBN.ToLower().Contains(search)
                               || a.Author.ToLower().Contains(search)).ToList();
@@ -247,23 +203,41 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            Student studentname = (Student)LstStudents.SelectedItem;
-            string books = TxtBooks.Text;
-            DateTime loandate = DtpLoanDate.Value;
-            DateTime returndate= DtpLoanDevolution.Value;
+            Student studentName = (Student)LstStudents.SelectedItem;
+            Book book = (Book)LstBooks.SelectedItem;
+            DateTime loanDate = DtpLoanDate.Value;
+            DateTime returnDate = DtpLoanDevolution.Value;
+            string observations = TxtObservations.Text;
 
-            if(studentname != null && !string.IsNullOrEmpty(TxtBooks.Text))
+            if (studentName == null || book == null || string.IsNullOrEmpty(observations))
             {
-                Loan loan = new Loan(studentname, books, loandate, returndate);
-                loans.Add(loan);
-                DialogResult = DialogResult.OK;
+                MessageBox.Show("Rellene todos los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            LoanState state = LoanState.Prestado;
+
+            Loan loan = new Loan(studentName, book, loanDate, returnDate, observations, state, null);
+
+            if (returnDate < DateTime.Now)
             {
-                MessageBox.Show("Rellene todos los campos","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                DialogResult = DialogResult.None;
+                int daysLate = (DateTime.Now - returnDate).Days;
+                Fine fine = new FineDaysLate(loan, 0, daysLate);
+                loan.Fine = fine;
+                loan.State = LoanState.Vencido;
             }
-            
+
+            loans.Add(loan);
+            DialogResult = DialogResult.OK;
+        }
+
+        private void LstBooks_Click(object sender, EventArgs e)
+        {
+            if (TxtBooks.Text != string.Empty)
+            {
+                TxtBooks.Text = ((Book)LstBooks.SelectedItem).Title;
+                LstBooks.Visible = false;
+            }
         }
     }
 }

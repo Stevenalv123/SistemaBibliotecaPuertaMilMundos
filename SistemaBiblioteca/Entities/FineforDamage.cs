@@ -10,24 +10,14 @@ namespace SistemaBiblioteca.Entities
     {
         public string DamageDescription { get; set; }
 
-
-        private static int counterFines = 1;
-
-        public FineforDamage(string iDFine, string iDLoan, decimal baseAmount, decimal totalFine, string damageDescription) : base(iDFine, iDLoan, baseAmount, totalFine)
+        public FineforDamage(Loan loan, decimal baseAmount, string damageDescription) : base(loan, baseAmount)
         {
             DamageDescription = damageDescription;
-            IDFine = GenerateIdFine();
-
-        }
-        public override string GenerateIdFine()
-        {
-            return $"M{counterFines.ToString("D3")}";
-
         }
 
-        public override void IncrementCounter()
+        public override decimal CalculateFine()
         {
-            counterFines++;
+            return 500;
         }
     }
 }

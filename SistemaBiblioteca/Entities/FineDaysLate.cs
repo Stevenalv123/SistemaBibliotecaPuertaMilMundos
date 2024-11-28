@@ -10,22 +10,14 @@ namespace SistemaBiblioteca.Entities
     {
         public int DaysLate { get; set; }
 
-        private static int counterFines = 1;
-        public FineDaysLate(int daysLate, string iDFine, string iDLoan, decimal baseAmount, decimal totalFine) : base(iDFine, iDLoan, baseAmount, totalFine)
+        public FineDaysLate(Loan loan, decimal baseAmount, int daysLate) : base(loan, baseAmount)
         {
             DaysLate = daysLate;
-            iDFine = GenerateIdFine();
         }
 
-        public override string GenerateIdFine()
+        public override decimal CalculateFine()
         {
-            return $"M{counterFines.ToString("D3")}";
-
-        }
-
-        public override void IncrementCounter()
-        {
-            counterFines++;
+            return DaysLate * 10; 
         }
     }
 }

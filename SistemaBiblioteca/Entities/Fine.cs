@@ -8,35 +8,16 @@ namespace SistemaBiblioteca.Entities
 {
     public abstract class Fine
     {
-        public string IDFine { get; set; }
-        public string IDLoan { get; set; }
+        public Loan Loan { get; set; }
         public decimal BaseAmount { get; set; }
-        public decimal TotalFine { get; set; }
+        public decimal TotalFine => CalculateFine();
 
-
-        private static int counterFines = 1;
-
-        public Fine(string iDFine, string iDLoan, decimal baseAmount, decimal totalFine)
+        protected Fine(Loan loan, decimal baseAmount)
         {
-            IDFine = GenerateIdFine();
-            IDLoan = iDLoan;
+            Loan = loan;
             BaseAmount = baseAmount;
-            TotalFine = totalFine;
         }
-        public override string ToString()
-        {
-            return $"IDmulta {IDFine}, IDPrestamo {IDLoan}, MontoBase {BaseAmount},  TotalMulta {TotalFine}";
-        }
-        //Metodo para generar el ID de la multa(Fine)
-        public abstract string GenerateIdFine();
-        //{
-        //    return $"M{counterFines.ToString("D3")}";
 
-        //}
-
-        public abstract void IncrementCounter();
-        //{            
-        //    counterFines++;
-        //}
+        public abstract decimal CalculateFine();
     }
 }

@@ -309,6 +309,7 @@
             Name = "MainFormStudents";
             Text = "Users";
             Load += MainFormStudents_Load;
+            KeyDown += MainFormStudents_KeyDown;
             TopPanel.ResumeLayout(false);
             TopPanel.PerformLayout();
             SearchPanel.ResumeLayout(false);

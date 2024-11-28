@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormBooks));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             ToolBoxUsers = new ToolStrip();
             BtnAddBook = new ToolStripButton();
@@ -45,7 +45,7 @@
             LblUsers = new Label();
             PrintDialogBooks = new PrintDialog();
             panel2 = new Panel();
-            DtvStudents = new DataGridView();
+            DtvBooks = new DataGridView();
             Cell_Title = new DataGridViewTextBoxColumn();
             Cell_Autor = new DataGridViewTextBoxColumn();
             Cell_Categorie = new DataGridViewTextBoxColumn();
@@ -61,7 +61,7 @@
             SearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DtvStudents).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DtvBooks).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -153,6 +153,7 @@
             TxtSearch.PlaceholderText = "Buscar libro....";
             TxtSearch.Size = new Size(332, 32);
             TxtSearch.TabIndex = 11;
+            TxtSearch.TextChanged += TxtSearch_TextChanged;
             // 
             // UsernamePanel
             // 
@@ -179,55 +180,55 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(DtvStudents);
+            panel2.Controls.Add(DtvBooks);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 112);
             panel2.Name = "panel2";
             panel2.Size = new Size(931, 518);
             panel2.TabIndex = 9;
             // 
-            // DtvStudents
+            // DtvBooks
             // 
-            DtvStudents.AllowUserToAddRows = false;
-            DtvStudents.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ActiveBorder;
-            DtvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            DtvStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DtvStudents.BackgroundColor = Color.White;
-            DtvStudents.BorderStyle = BorderStyle.None;
-            DtvStudents.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.NullValue = "-";
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DtvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            DtvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DtvStudents.Columns.AddRange(new DataGridViewColumn[] { Cell_Title, Cell_Autor, Cell_Categorie, Cell_ISBN, Cell_Editorial, Cell_Year, Cell_Stock, Cell_State, Cell_Pages });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle3.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.WindowFrame;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            DtvStudents.DefaultCellStyle = dataGridViewCellStyle3;
-            DtvStudents.Dock = DockStyle.Fill;
-            DtvStudents.Location = new Point(0, 0);
-            DtvStudents.MultiSelect = false;
-            DtvStudents.Name = "DtvStudents";
-            DtvStudents.ReadOnly = true;
-            DtvStudents.RowHeadersVisible = false;
-            DtvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DtvStudents.Size = new Size(931, 518);
-            DtvStudents.TabIndex = 4;
+            DtvBooks.AllowUserToAddRows = false;
+            DtvBooks.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ActiveBorder;
+            DtvBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            DtvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DtvBooks.BackgroundColor = Color.White;
+            DtvBooks.BorderStyle = BorderStyle.None;
+            DtvBooks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.NullValue = "-";
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            DtvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            DtvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DtvBooks.Columns.AddRange(new DataGridViewColumn[] { Cell_Title, Cell_Autor, Cell_Categorie, Cell_ISBN, Cell_Editorial, Cell_Year, Cell_Stock, Cell_State, Cell_Pages });
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle6.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.WindowFrame;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            DtvBooks.DefaultCellStyle = dataGridViewCellStyle6;
+            DtvBooks.Dock = DockStyle.Fill;
+            DtvBooks.Location = new Point(0, 0);
+            DtvBooks.MultiSelect = false;
+            DtvBooks.Name = "DtvBooks";
+            DtvBooks.ReadOnly = true;
+            DtvBooks.RowHeadersVisible = false;
+            DtvBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DtvBooks.Size = new Size(931, 518);
+            DtvBooks.TabIndex = 4;
             // 
             // Cell_Title
             // 
@@ -306,7 +307,7 @@
             SearchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)DtvStudents).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DtvBooks).EndInit();
             ResumeLayout(false);
         }
 
@@ -324,7 +325,7 @@
         private PrintDialog PrintDialogBooks;
         private ToolStripButton BtnAddBook;
         private Panel panel2;
-        private DataGridView DtvStudents;
+        private DataGridView DtvBooks;
         private DataGridViewTextBoxColumn Cell_Title;
         private DataGridViewTextBoxColumn Cell_Autor;
         private DataGridViewTextBoxColumn Cell_Categorie;

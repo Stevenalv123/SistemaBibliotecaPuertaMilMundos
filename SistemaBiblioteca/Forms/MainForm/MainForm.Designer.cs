@@ -115,7 +115,7 @@
             BtnUsers.Name = "BtnUsers";
             BtnUsers.Size = new Size(356, 73);
             BtnUsers.TabIndex = 2;
-            BtnUsers.Text = "Usuarios";
+            BtnUsers.Text = "Estudiantes";
             BtnUsers.UseVisualStyleBackColor = false;
             BtnUsers.Click += ShowUsers;
             // 
@@ -183,6 +183,7 @@
             Text = "Pagina Principal";
             WindowState = FormWindowState.Maximized;
             FormClosing += Exit;
+            Load += MainForm_Load;
             LateralPanel.ResumeLayout(false);
             IconPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)LogoPicture).EndInit();

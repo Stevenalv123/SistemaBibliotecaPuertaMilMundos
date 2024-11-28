@@ -23,7 +23,6 @@ namespace SistemaBiblioteca.Forms.Books
                 State state = State.Disponible;
                 Categorie categorie = (Categorie)CmbCategories.SelectedItem;
                 string authors = TxtAuthors.Text;
-                string coverPath = PcbCover.ImageLocation;
 
                 Book book = new Book(title, authors, categorie, isbn, editorial, yearPublication, stock, state, pages);
                 books.Add(book);
@@ -91,20 +90,6 @@ namespace SistemaBiblioteca.Forms.Books
                 CmbCategories.DataSource = categories.ToList();
                 CmbCategories.DisplayMember = "Name";
                 CmbCategories.ValueMember = "Name";
-            }
-        }
-
-        private void PcbCover_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            openFileDialog.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png";
-            openFileDialog.FilterIndex = 1;
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                PcbCover.Image = new Bitmap(openFileDialog.FileName);
-                PcbCover.ImageLocation = openFileDialog.FileName;
             }
         }
 

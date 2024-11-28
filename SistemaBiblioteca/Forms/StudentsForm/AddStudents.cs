@@ -31,7 +31,7 @@ namespace SistemaBiblioteca.Forms.StudentsForm
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {
-            if (ValidarEmail() == false)
+            if (ValidarEmail() != false &&  ValidarTextboxs()!=false)
             {
                 if (studentToUpdate == null)
                 {
@@ -56,7 +56,8 @@ namespace SistemaBiblioteca.Forms.StudentsForm
                     studentToUpdate.PhoneNumber = MtbTelephone.Text;
                     studentToUpdate.Email = TxtEmail.Text;
                     studentToUpdate.Carrer = TxtCarrer.Text;
-
+                    
+                    MessageBox.Show("Estudiante actualizado correctamente","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);  
                     DialogResult = DialogResult.OK;
                 }
             }
@@ -64,6 +65,16 @@ namespace SistemaBiblioteca.Forms.StudentsForm
             {
                 DialogResult = DialogResult.None;
             }
+        }
+
+        public bool ValidarTextboxs()
+        {
+            if (MtbCarnet.Text == "" || TxtName.Text == "" || TxtAdress.Text == "" || MtbTelephone.Text == "" || TxtEmail.Text == "" || TxtCarrer.Text == "")
+            {
+                MessageBox.Show("Llene todos los campos","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
 
         public bool ValidarEmail()
@@ -82,6 +93,7 @@ namespace SistemaBiblioteca.Forms.StudentsForm
 
         private void AddStudents_Load(object sender, EventArgs e)
         {
+            MtbCarnet.Focus();
             if(studentToUpdate != null)
             {
                 MtbCarnet.Text = studentToUpdate.Carnet;

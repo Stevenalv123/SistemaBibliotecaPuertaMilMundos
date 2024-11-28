@@ -21,10 +21,10 @@ namespace SistemaBiblioteca.Forms
 
         private void ShowBooksOnDataGridView()
         {
-            DtvStudents.Rows.Clear();
+            DtvBooks.Rows.Clear();
             foreach (Book book in books.OrderBy(a => a.Title))
             {
-                DtvStudents.Rows.Add(book.Title,book.Author,book.Categorie.Name,book.ISBN, book.Editorial.Name, book.YearPublication, book.Stock, book.BookState, book.Pages);
+                DtvBooks.Rows.Add(book.Title,book.Author,book.Categorie.Name,book.ISBN, book.Editorial.Name, book.YearPublication, book.Stock, book.BookState, book.Pages);
             }
         }
 

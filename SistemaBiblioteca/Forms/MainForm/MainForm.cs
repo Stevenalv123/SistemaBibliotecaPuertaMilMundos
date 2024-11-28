@@ -12,5 +12,10 @@ namespace SistemaBiblioteca
             Login login = new Login();
             login.Close();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            ShowDevolutions(sender, e);
+        }
     }
 }

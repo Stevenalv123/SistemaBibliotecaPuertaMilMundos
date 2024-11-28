@@ -301,7 +301,7 @@ namespace SistemaBiblioteca.Forms
             {
                 BtnEdit_Click(sender, e);
             }
-            if (e.Control && e.KeyCode == Keys.A)
+            if (e.Control && e.KeyCode == Keys.D)
             {
                 BtnDelete_Click(sender, e);
             }

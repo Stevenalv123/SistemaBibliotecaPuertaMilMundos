@@ -1,0 +1,12 @@
+﻿INSTRUCCIONES DE USO PARA ESTE SISTEMA
+1- Si es la primera vez que ejecuta este sistema, este creara los archivos necesarios para su correcto funcionamiento, asi que esto puede tardar un poco.
+2- El administrador por default para iniciar sesion en el sistema es Admin, y su contraseña 123, luego en el apartado de administradores puede eliminarlo y crear uno nuevo.
+3- En el lado izquierdo hay un panel con tres apartados para PRESTAMOS Y DEVOLUCIONES, otro para USUARIOS, LIBROS, y por ultimo ADMINISTRADORES, el cual puede acceder a cada uno de ellos.
+4- En el apartado de estudiantes puede ocupar atajos de teclado para realizar acciones mas rapidas, las cuales son las siguientes:
+	- Ctrl+N = Nuevo estudiante
+	- Ctrl+E = Editar estudiante
+	- Ctrl+D = Eliminar estudiante
+	- Ctrl+B = Buscar estudiante
+5- Para poder realizar las acciones de eliminar y actualizar en cualquiera de los apartados debe seleccionar 1 para realizar dicha accion.
+6- Asegurese de rellenar todos los formularios de usuarios, prestamos, libros, etc antes de guardar, de lo contrario el sistema se lo rechazara.
+7- Para poder generar un informe debe apretar sobre el boton de imprimir, y proporcionarle la ubicacion en su computador. Asegurese de cambiarle el nombre para evitar sobreescrituras.

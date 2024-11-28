@@ -10,17 +10,20 @@ namespace SistemaBiblioteca.Forms
 {
     public partial class MainFormBooks : Form
     {
+        //Carga la informacion en el data al abrir el formulario
         private void MainFormBooks_Load(object sender, EventArgs e)
         {
             LoadBooksFromFile();
             ShowBooksOnDataGridView();
         }
 
+        //No hace nada :(
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            PrintDialogBooks.ShowDialog();
+            //PrintDialogBooks.ShowDialog();
         }
 
+        //Abre el formulario de agregar libro
         private void AddNewBook(object sender, EventArgs e)
         {
             AddBooks addBooks = new AddBooks(books);
@@ -34,6 +37,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Atajos de teclado
         private void MainFormBooks_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.N)
@@ -46,6 +50,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Busca la informacion en la lista y la carga en el data
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             List<Book> filteredBooks = new List<Book>();
@@ -57,6 +62,7 @@ namespace SistemaBiblioteca.Forms
             UpdateBookData(filteredBooks);
         }
 
+        //Actualizar los libros en el data
         private void UpdateBookData(List<Book> booksToShow)
         {
             DtvBooks.Rows.Clear();

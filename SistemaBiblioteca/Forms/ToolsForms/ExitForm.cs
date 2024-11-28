@@ -18,12 +18,14 @@ namespace SistemaBiblioteca.Forms
             this.AcceptButton = BtnExit;
         }
 
+        //Cerrar la aplicacion
         private void BtnExit_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Yes;
             this.Close();
         }
 
+        //Cancelar la accion
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult=DialogResult.Cancel;

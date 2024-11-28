@@ -11,6 +11,7 @@ namespace SistemaBiblioteca.Forms
 {
     public partial class MainFormBooks:Form
     {
+        //Muestra un form personalizado para indicar que se guardo correctamente
         private async void ShowAlert()
         {
             AlertForm alert = new AlertForm();
@@ -19,6 +20,7 @@ namespace SistemaBiblioteca.Forms
             alert.Close();
         }
 
+        //Muestra los libros en el data
         private void ShowBooksOnDataGridView()
         {
             DtvBooks.Rows.Clear();
@@ -28,6 +30,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Guardar en archivos
         public void SaveBooksToFile()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -54,6 +57,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Cargar en archivos
         public void LoadBooksFromFile()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");

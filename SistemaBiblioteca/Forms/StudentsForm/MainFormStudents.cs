@@ -18,6 +18,7 @@ namespace SistemaBiblioteca.Forms
             selectedstudents = new List<Student>();
         }
 
+        //Abre el formulario para añadir un estudiante
         private void BtnAddStudent_Click(object sender, EventArgs e)
         {
             AddStudents addStudents = new AddStudents(students, null);
@@ -29,6 +30,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Guardar estudiantes en archivos
         public void SaveStudents()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -55,6 +57,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Cargar la info de archivos y ponerla en el data
         public List<Student> LoadStudents()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -112,6 +115,7 @@ namespace SistemaBiblioteca.Forms
             return students;
         }
 
+        //Mostrar alerta de guardado
         private async void ShowAlert()
         {
             AlertForm alert = new AlertForm();
@@ -120,16 +124,19 @@ namespace SistemaBiblioteca.Forms
             alert.Close();
         }
 
+        //Cargar la info
         private void MainFormStudents_Load(object sender, EventArgs e)
         {
             LoadStudents();
         }
 
+        //Imprimir la info de usuarios
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             ExportToPDF();
         }
 
+        //Metodo para generar pdf
         public void ExportToPDF()
         {
             try
@@ -206,8 +213,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
-
-
+        //Buscar estudiantes
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             string search = TxtSearch.Text.Trim().ToLower();
@@ -217,6 +223,7 @@ namespace SistemaBiblioteca.Forms
             UpdateStudentsList(filteredstudents);
         }
 
+        //Actualizar el datagridview
         private void UpdateStudentsList(List<Student> studentsToShow)
         {
             DtvStudents.Rows.Clear();
@@ -226,6 +233,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Eliminar estudiante
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             if (DtvStudents.SelectedRows.Count > 0)
@@ -255,12 +263,14 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Obtener indice seleccionado
         private void DtvStudents_SelectionChanged(object sender, EventArgs e)
         {
             BtnDelete.Enabled = DtvStudents.SelectedRows.Count > 0;
             BtnEdit.Enabled = DtvStudents.SelectedRows.Count > 0;
         }
 
+        //Editar estudiante
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             if (DtvStudents.SelectedRows.Count > 0)
@@ -287,6 +297,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Atajos de teclado
         private void MainFormStudents_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.B)

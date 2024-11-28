@@ -22,6 +22,7 @@ namespace SistemaBiblioteca.Forms.AdminsForms
             admin = adminToEdit;
         }
 
+        //Evento que toma los datos de los textboxs y mandarlos al formulario
         private void BtnAccept_Click(object sender, EventArgs e)
         {
             if (admin != null)
@@ -83,6 +84,7 @@ namespace SistemaBiblioteca.Forms.AdminsForms
             }
         }
 
+        //Metodo que carga la informacion recibida del formulario anterior
         private void Register_Load(object sender, EventArgs e)
         {
             if (admin != null)

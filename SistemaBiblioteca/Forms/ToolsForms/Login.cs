@@ -11,21 +11,22 @@ namespace SistemaBiblioteca.Forms
             administrators = new List<Administrator>();
         }
 
+        //Continuar si es correcta la info
         private void BtnAccept_Click(object sender, EventArgs e)
         {
-
             if (ValidateFields())
             {
                 ValidateCredentials();
             }
         }
 
+        //Cerrar
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-
+        //Validar los campos
         private bool ValidateFields()
         {
             bool isValid = true;
@@ -55,6 +56,7 @@ namespace SistemaBiblioteca.Forms
             return isValid;
         }
 
+        //Validar la informacion a ver si es correcta
         private void ValidateCredentials()
         {
             string username=TxtUserName.Text;
@@ -86,6 +88,7 @@ namespace SistemaBiblioteca.Forms
             }
         }
 
+        //Cargar los administradores de archivos
         public List<Administrator> LoadChanges()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");

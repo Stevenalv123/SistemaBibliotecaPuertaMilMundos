@@ -25,6 +25,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             this.Close();
         }
 
+        //Guarda la nueva editorial
         private void BtnSave_Click(object sender, EventArgs e)
         {
             string name = TxtName.Text;

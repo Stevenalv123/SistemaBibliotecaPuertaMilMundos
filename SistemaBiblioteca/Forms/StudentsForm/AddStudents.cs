@@ -24,11 +24,13 @@ namespace SistemaBiblioteca.Forms.StudentsForm
             this.studentToUpdate = studentToUpdate;
         }
 
+        //Cerrar el form
         private void BtnClose_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
+        //Obtener la info de los textboxs y cerrar el formulario
         private void BtnAccept_Click(object sender, EventArgs e)
         {
             if (ValidarEmail() != false &&  ValidarTextboxs()!=false)
@@ -67,6 +69,7 @@ namespace SistemaBiblioteca.Forms.StudentsForm
             }
         }
 
+        //Validar los campos
         public bool ValidarTextboxs()
         {
             if (MtbCarnet.Text == "" || TxtName.Text == "" || TxtAdress.Text == "" || MtbTelephone.Text == "" || TxtEmail.Text == "" || TxtCarrer.Text == "")
@@ -77,6 +80,7 @@ namespace SistemaBiblioteca.Forms.StudentsForm
             return true;
         }
 
+        //Validar el email
         public bool ValidarEmail()
         {
             if (TxtEmail.Text.Contains("@") && TxtEmail.Text.Contains("."))
@@ -91,6 +95,7 @@ namespace SistemaBiblioteca.Forms.StudentsForm
             return false;
         }
 
+        //Cargar estudiantes para editar
         private void AddStudents_Load(object sender, EventArgs e)
         {
             MtbCarnet.Focus();

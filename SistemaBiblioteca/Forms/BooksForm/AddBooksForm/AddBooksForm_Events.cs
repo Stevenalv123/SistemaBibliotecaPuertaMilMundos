@@ -10,6 +10,7 @@ namespace SistemaBiblioteca.Forms.Books
 {
     public partial class AddBooks:Form
     {
+        //Tomar los valores de los textbox y enviar esa informacion al formulario de mainformbooks
         private void BtnSave_Click(object sender, EventArgs e)
         {
             try
@@ -34,6 +35,8 @@ namespace SistemaBiblioteca.Forms.Books
             }
         }
 
+
+        //Abre el formulario de autores
         private void BtnAddAuthor_Click(object sender, EventArgs e)
         {
             AuthorsForms autorForm = new AuthorsForms(selectedAuthors);
@@ -43,6 +46,7 @@ namespace SistemaBiblioteca.Forms.Books
             }
         }
 
+        //Abre el formulario de editoriales
         private void BtnAddEditorial_Click(object sender, EventArgs e)
         {
             AddEditorialForm addEditorialForm = new AddEditorialForm(editorials);
@@ -57,6 +61,7 @@ namespace SistemaBiblioteca.Forms.Books
             }
         }
 
+        //Evento para validar la entrada de un maskedtextbox
         private void MtbISBN_TextChanged(object sender, EventArgs e)
         {
             LblIconFormat.Text = "✘";
@@ -75,11 +80,13 @@ namespace SistemaBiblioteca.Forms.Books
             }
         }
 
+        //Validar entradas
         private void TxtTitle_TextChanged(object sender, EventArgs e)
         {
             ValidateForm();
         }
 
+        //Abre el formulario de categorias
         private void BtnAddCategorie_Click(object sender, EventArgs e)
         {
             AddCategorieForm addCategorieForm = new AddCategorieForm(categories);
@@ -94,6 +101,7 @@ namespace SistemaBiblioteca.Forms.Books
             }
         }
 
+        //Evento que carga la informacion en los comboboxes
         private void AddBooks_Load(object sender, EventArgs e)
         {
             categories = LoadCategories();

@@ -5,6 +5,7 @@ namespace SistemaBiblioteca
 {
     public partial class MainForm : Form
     {
+        //Metodo para abrir formularios
         private Form ActiveForm;
         private void OpenForm(Form ChildForm)
         {
@@ -19,11 +20,13 @@ namespace SistemaBiblioteca
             ChildForm.Show();
         }
 
+        //Mostrar pantalla de carga
         private void ShowLoading()
         {
             Thread.Sleep(2000);
         }
 
+        //Validar si ya esta abierto el formulario para no volverlo a abrirlo
         private bool IsFormOpen(Type formType)
         {
             foreach (Form form in Application.OpenForms)

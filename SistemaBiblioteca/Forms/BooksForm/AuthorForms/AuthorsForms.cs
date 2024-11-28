@@ -21,11 +21,13 @@ namespace SistemaBiblioteca.Forms.BooksForm
             this.selectedAuthors = selectedAuthors;
         }
 
+        //Cargar el listbox con la informacion de archivos de autores
         private void AuthorsForms_Load(object sender, EventArgs e)
         {
             UpdateAuthorList(filteredAuthors);
         }
 
+        //Abre el form para añadir un autor
         private void BtnAddAuthor_Click(object sender, EventArgs e)
         {
             AddAutorForm addAutorForm = new AddAutorForm(authors, null);
@@ -37,6 +39,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             }
         }
 
+        //Toma los autores seleccionados en el listbox
         private void SelectedAuthor(object sender, EventArgs e)
         {
             selectedAuthors.Clear();
@@ -63,11 +66,13 @@ namespace SistemaBiblioteca.Forms.BooksForm
             }
         }
 
+        //Cierra el formulario con la informacion
         private void BtnReady_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
         }
-
+        
+        //Carga los autores de archivos
         public static List<Author> LoadAuthors()
         {
             string rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -110,6 +115,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             return authors;
         }
 
+        //Actualiza los items del listbox
         private void UpdateAuthorList(List<Author> authorsToShow)
         {
             lstAuthors.Items.Clear();
@@ -120,11 +126,13 @@ namespace SistemaBiblioteca.Forms.BooksForm
             }
         }
 
+        //Busca un autor en el listbox mientras el usuarios escribe
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             SearchAuthor();
         }
 
+        //Filtra los autores encontrados
         private void SearchAuthor()
         {
             string search = TxtSearch.Text.Trim().ToLower();
@@ -135,6 +143,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             UpdateAuthorList(filteredAuthors);
         }
 
+        //Eliminar uno o varios autores
         private void BtnDeleteAuthor_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("¿Está seguro que desea eliminar el autor seleccionado?", "Eliminar autor", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -156,6 +165,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             }
         }
 
+        //Guardar la informacion en archivos
         private void SaveAuthorsToFile()
         {
             string rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -182,6 +192,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             }
         }
 
+        //Abre el formulario con la informacion del autor
         private void BtnUpdateAuthor_Click(object sender, EventArgs e)
         {
             if(selectedAuthors.Count > 0)

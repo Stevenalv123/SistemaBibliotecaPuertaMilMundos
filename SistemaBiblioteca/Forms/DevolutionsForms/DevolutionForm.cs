@@ -17,7 +17,8 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             devolutions = new List<Devolution>();
         }
 
-        private void BtnAddBook_Click(object sender, EventArgs e)
+        //Abre el formulario de prestamo y espera la informacion
+        private void BtnAddPrestamo_Click(object sender, EventArgs e)
         {
             NewPrestamo newPrestamo = new NewPrestamo(loans);
             if (newPrestamo.ShowDialog() == DialogResult.OK)
@@ -28,6 +29,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             }
         }
 
+        //Carga la informacion al iniciar el formulario
         private void DevolutionForm_Load(object sender, EventArgs e)
         {
             loans = LoadLoanFile();
@@ -36,6 +38,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             LoadDevolutionOnDataGridView(devolutions);
         }
 
+        //Carga la informacion en el datagridview
         private void LoadInfoOnDataGridView()
         {
             DtvLoans.Rows.Clear();
@@ -68,6 +71,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             }
         }
 
+        //Carga la informacion de devoluciones en el datagridview
         public void LoadDevolutionOnDataGridView(List<Devolution> devolutions)
         {
             DtvDevoluciones.Rows.Clear();
@@ -77,6 +81,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             }
         }
 
+        //Guardar la info de los prestamos en archivos
         private void SaveLoans()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -103,6 +108,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             }
         }
 
+        //Cargar la informacion de prestamos de archivos
         public List<Loan> LoadLoanFile()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -185,6 +191,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             return loans;
         }
 
+        //Accion de los botones en el datagridview
         private void DtvLoans_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DtvLoans.Columns["BtnEntregado"].Index && e.RowIndex >= 0)
@@ -223,6 +230,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             }
         }
 
+        //Eliminar la devolucion
         public void EliminarDevolucion(string loanCode)
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -251,7 +259,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             }
         }
 
-
+        //Guardar la informacion de devoluciones en archivos
         private void SaveDevolutionsOnFile()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -278,6 +286,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             }
         }
 
+        //Cargar la informacion de devoluciones de los archivos
         private List<Devolution> LoadDevolutionsFromFile()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -334,6 +343,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             return devolutions;
         }
 
+        //Generar recibo de prestamo
         public void ExportToPDF(string name, string book, DateTime devolutiondate)
         {
             try

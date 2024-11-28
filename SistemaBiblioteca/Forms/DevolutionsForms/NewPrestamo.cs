@@ -18,6 +18,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             this.loans = loans;
         }
 
+        //Bucar estudiantes para buscarlos en el listbox
         private void TxtStudents_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(TxtStudents.Text))
@@ -34,6 +35,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             LstStudents.DisplayMember = "Name";
         }
 
+        //Cargar los estudiantes en el listbox
         public static List<Student> LoadStudents()
         {
             string rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -78,6 +80,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             return students;
         }
 
+        //Cargar los libros en el listbox
         public static List<Book> LoadBooks()
         {
             string rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -127,6 +130,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             return books;
         }
 
+        //Cargar la info en los listboxes
         private void NewPrestamo_Load(object sender, EventArgs e)
         {
             students = LoadStudents();
@@ -144,6 +148,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             AddDates();
         }
 
+        //Metodo para buscar estudiantes
         private List<Student> SearchStudents()
         {
             LstStudents.SelectedIndex = -1;
@@ -154,6 +159,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             return filteredStudents;
         }
 
+        //Obtener el item seleccionado en el listbox
         private void LstStudents_Click(object sender, EventArgs e)
         {
             if (TxtStudents.Text != string.Empty)
@@ -163,17 +169,20 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             }
         }
 
+        //Agregarle 5 dias a la fecha de hoy para la fecha de devolucion
         private void AddDates()
         {
             DtpLoanDevolution.Value = DtpLoanDate.Value;
             DtpLoanDevolution.Value = DtpLoanDevolution.Value.AddDays(5);
         }
 
+        //Obtener algun cambio de fecha
         private void DtpLoanDate_ValueChanged(object sender, EventArgs e)
         {
             AddDates();
         }
 
+        //Buscar libros en el listbox
         private void TxtBook_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(TxtBooks.Text))
@@ -190,6 +199,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             LstBooks.DisplayMember = "Title";
         }
 
+        //Metodo para buscar
         private List<Book> SearchBook()
         {
             LstBooks.SelectedIndex = -1;
@@ -201,6 +211,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             return filteredBooks;
         }
 
+        //Guardar esa info y cerrar el formulario
         private void BtnSave_Click(object sender, EventArgs e)
         {
             Student studentName = (Student)LstStudents.SelectedItem;
@@ -231,6 +242,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             DialogResult = DialogResult.OK;
         }
 
+        //Obtener el item seleccionado en el listbox de libros
         private void LstBooks_Click(object sender, EventArgs e)
         {
             if (TxtBooks.Text != string.Empty)

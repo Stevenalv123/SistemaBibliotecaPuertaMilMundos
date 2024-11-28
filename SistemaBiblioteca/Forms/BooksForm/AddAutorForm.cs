@@ -22,6 +22,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             authorToEdit = authorsToEdit;
         }
 
+        //Guarda la info en una lista y cierra el form
         private void BtnSave_Click(object sender, EventArgs e)
         {
             if (authorToEdit != null)
@@ -45,6 +46,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             }
         }
 
+        //Carga la info recibida en los textboxs
         private void AddAutorForm_Load(object sender, EventArgs e)
         {
             if (authorToEdit != null)

@@ -13,12 +13,16 @@ namespace SistemaBiblioteca.Forms.AdminsForms
             administrators = new List<Administrator>();
         }
 
+
+        //Al cargar el form la lista de administrator toma el valor de LoadChanges cargado de archivos y se muestra en el Flow layout
         private void AdminstratorsForms_Load(object sender, EventArgs e)
         {
             administrators=LoadChanges();
             ShowAdminsOnFlowLayoutPanel();
         }
 
+
+        //Mostrar la informacion en el flow
         private void ShowAdminsOnFlowLayoutPanel()
         {
             Color redColor = Color.FromArgb(185, 27, 33);
@@ -140,6 +144,7 @@ namespace SistemaBiblioteca.Forms.AdminsForms
             }
         }
 
+        //Evento para añadir un nuevo administrador
         private void TsbAddStudent_Click(object sender, EventArgs e)
         {
             Register register = new Register(administrators,null);
@@ -150,6 +155,7 @@ namespace SistemaBiblioteca.Forms.AdminsForms
             }
         }
 
+        //Metodo para guardar los datos en archivos txt
         private void SaveChanges()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -176,6 +182,7 @@ namespace SistemaBiblioteca.Forms.AdminsForms
             }
         }
 
+        //Metodo para cargar los datos de archivos
         public List<Administrator> LoadChanges()
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");

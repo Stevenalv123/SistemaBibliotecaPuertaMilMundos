@@ -20,6 +20,7 @@ namespace SistemaBiblioteca.Forms.BooksForm
             categories = existingCategories;
         }
 
+        //Guardar las categorias
         private void BtnSave_Click(object sender, EventArgs e)
         {
             string name = txtName.Text;

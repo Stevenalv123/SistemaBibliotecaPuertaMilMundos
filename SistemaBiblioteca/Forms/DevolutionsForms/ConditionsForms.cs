@@ -15,6 +15,7 @@ namespace SistemaBiblioteca.Forms.DevolutionsForms
             this.dataGridView = dataGrid;
         }
 
+        //Dependiendo el estado entregado del libro aplica multa o no
         private void BtnAccept_Click(object sender, EventArgs e)
         {
             ReturnCondition returnCondition = ReturnCondition.Intacto;

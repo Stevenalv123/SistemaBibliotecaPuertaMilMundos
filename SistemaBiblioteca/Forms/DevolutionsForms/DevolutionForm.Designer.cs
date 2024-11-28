@@ -260,7 +260,7 @@
             BtnNewRegister.Name = "BtnNewRegister";
             BtnNewRegister.Size = new Size(76, 43);
             BtnNewRegister.Text = "Nuevo";
-            BtnNewRegister.Click += BtnAddBook_Click;
+            BtnNewRegister.Click += BtnAddPrestamo_Click;
             // 
             // BtnPrint
             // 

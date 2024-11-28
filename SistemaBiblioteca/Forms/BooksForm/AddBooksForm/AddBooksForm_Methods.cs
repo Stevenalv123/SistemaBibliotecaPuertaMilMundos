@@ -9,6 +9,7 @@ namespace SistemaBiblioteca.Forms.Books
 {
     public partial class AddBooks: Form
     {
+        //Valida la informacion en los textboxs
         private void ValidateForm()
         {
             bool isTitleValid = !string.IsNullOrEmpty(TxtTitle.Text);
@@ -18,6 +19,7 @@ namespace SistemaBiblioteca.Forms.Books
             BtnSave.Enabled = isTitleValid && isISBNValid && isCategorieValid;
         }
 
+        //Carga la informacion de los archivos de categorias
         public static List<Categorie> LoadCategories()
         {
             string rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -68,6 +70,7 @@ namespace SistemaBiblioteca.Forms.Books
             return categories;
         }
 
+        //Guarda la info en archivos
         private void SaveCategories(List<Categorie> categories)
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -94,6 +97,7 @@ namespace SistemaBiblioteca.Forms.Books
             }
         }
 
+        //Carga la info de los archivos de editoriales
         public static List<Editorial> LoadEditorials()
         {
             string rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
@@ -150,6 +154,7 @@ namespace SistemaBiblioteca.Forms.Books
             return editorials;
         }
 
+        //Guarda la informacion en los archivos para editoriales
         private void SaveEditorials(List<Editorial> editorials)
         {
             string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
